@@ -10,18 +10,18 @@ import { colors } from "@/styles/colors";
 
 export default function Header() {
     return (
-        <header className="flex flex-1 w-screen 2xl:h-20 justify-between items-center 2xl:px-8">
+        <header className="flex flex-1 w-screen 2xl:h-20 justify-between items-center 2xl:py-1 2xl:px-8">
             <Link href="/" className="hover-card">
                 <Image src={logo} alt="Logo Jiquiri" className="2xl:size-16 select-none" draggable={false} />
             </Link>
 
-            <div className="flex flex-1 2xl:gap-16 justify-end items-center">
+            <div className="flex flex-1 2xl:gap-16 justify-end items-center select-none">
                 <div className="flex 2xl:gap-20 justify-center items-center">
-                    <Link href="/" className="text-Gray_Jiquiri 2xl:text-lg font-poppins text-center hover:text-Black_Jiquiri p-2 hover-card hover:underline">Inicio</Link>
-                    <Link href="/projeto-jiquiri" className="text-Gray_Jiquiri 2xl:text-lg font-poppins text-center hover:text-Black_Jiquiri p-2 hover-card hover:underline">Projeto Jiquiri?</Link>
-                    <Link href="/relatorios" className="text-Gray_Jiquiri 2xl:text-lg font-poppins text-center hover:text-Black_Jiquiri p-2 hover-card hover:underline">Relatórios</Link>
-                    <Link href="/equipe" className="text-Gray_Jiquiri 2xl:text-lg font-poppins text-center hover:text-Black_Jiquiri p-2 hover-card hover:underline">Equipe</Link>
-                    <Link href="/sobre" className="text-Gray_Jiquiri 2xl:text-lg font-poppins text-center hover:text-Black_Jiquiri p-2 hover-card hover:underline">Sobre</Link>
+                    <Link href="/" className="text-Gray_Jiquiri 2xl:text-lg font-poppins tracking-wide text-center hover:text-Black_Jiquiri p-2 hover-card hover:underline">Inicio</Link>
+                    <Link href="/projeto-jiquiri" className="text-Gray_Jiquiri 2xl:text-lg font-poppins tracking-wide text-center hover:text-Black_Jiquiri p-2 hover-card hover:underline">Projeto Jiquiri?</Link>
+                    <Link href="/relatorios" className="text-Gray_Jiquiri 2xl:text-lg font-poppins tracking-wide text-center hover:text-Black_Jiquiri p-2 hover-card hover:underline">Relatórios</Link>
+                    <Link href="/equipe" className="text-Gray_Jiquiri 2xl:text-lg font-poppins tracking-wide text-center hover:text-Black_Jiquiri p-2 hover-card hover:underline">Equipe</Link>
+                    <Link href="/sobre" className="text-Gray_Jiquiri 2xl:text-lg font-poppins tracking-wide text-center hover:text-Black_Jiquiri p-2 hover-card hover:underline">Sobre</Link>
                 </div>
 
                 <div className="flex 2xl:gap-6 justify-center items-center">
