@@ -83,3 +83,23 @@ html {
     @apply bg-background text-foreground;
   }
 }
+
+
+::selection {
+  background-color: #859F3D;
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #E0D9CE;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #859F3D; 
+  border-radius: 50px;
+  border: 2px solid #E0D9CE;;
+}
