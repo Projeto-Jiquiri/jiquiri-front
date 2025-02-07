@@ -12,7 +12,7 @@ export default function HomeBanner() {
     const router = useRouter();
 
     return (
-        <div className="flex flex-1 flex-col justify-center items-center bg-Dark_Green_Jiquiri">
+        <div className="flex flex-1 flex-col justify-center items-center 2xl:mt-8 bg-Dark_Green_Jiquiri">
             <div className="flex flex-1 justify-center items-center 2xl:w-screen 2xl:p-16 2xl:gap-20">
                 <div className="flex justify-center items-center 2xl:gap-16">
                     <p className=" text-White_Jiquiri font-poppins font-light 2xl:text-lg 2xl:w-80 text-center">Lorem ipsum dolor sit amet consectetur. Quis lorem massa tempus neque fringilla. Malesuada vulputate cursus interdum nunc sapien nunc.</p>
