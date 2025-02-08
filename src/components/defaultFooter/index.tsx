@@ -17,7 +17,7 @@ const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 export default function DefaultFooter() {
     return (
-        <div className="flex flex-1 flex-col justify-center items-center 2xl:gap-28 2xl:mt-32">
+        <div className="flex flex-1 flex-col justify-center items-center 2xl:gap-28 2xl:mt-24">
             <Lottie
                 animationData={plantInfinityAnimation}
                 autoPlay
