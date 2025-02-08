@@ -6,6 +6,7 @@ import TitleHome from "@/components/titleHome";
 import Hero from "@/assets/PNG/Hero.png";
 import { VerticalDividerDashed } from "@/components/divider";
 import HomeBanner from "@/components/homeBanner";
+import DefaultFooter from "@/components/defaultFooter";
 
 export default function Home() {
   return (
@@ -30,6 +31,7 @@ export default function Home() {
 
         <HomeBanner />
 
+        <DefaultFooter />
       </main>
     </div>
   );
