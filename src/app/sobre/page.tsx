@@ -28,7 +28,7 @@ export default function SobrePage() {
                         <p className="font-poppins font-light text-black 2xl:text-lg text-center">Lorem ipsum dolor sit amet consectetur. Suscipit dictum eu suspendisse cras tellus lectus urna cras. Lectus nunc convallis dictum eget porta platea turpis tempor dignissim. Facilisi faucibus donec enim orci. Tempus aliquam tincidunt non eros massa pharetra. Neque metus et nisl ac eu odio.
                             <br />
                             <br />
-                            Lorem ipsum dolor sit amet consectetur. Suscipit dictum eu suspendisse cras tellus lectus urna cras. Lectus nunc convallis dictum eget porta platea turpis tempor dignissim. Facilisi faucibus donec enim orci. Tempus aliquam tincidunt non eros massa pharetra. Neque metus et nisl ac eu odio.Lorem
+                            Lorem ipsum dolor sit amet consectetur. Suscipit dictum eu suspendisse cras tellus lectus urna cras. Lectus nunc convallis dictum eget porta platea turpis tempor dignissim. Facilisi faucibus donec enim orci. Tempus aliquam tincidunt non eros massa pharetra. Neque metus et nisl ac eu odio.
                         </p>
 
                     </div>
