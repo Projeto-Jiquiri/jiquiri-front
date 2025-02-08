@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 
@@ -8,12 +9,13 @@ import title from "@/assets/SVG/Title.svg";
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 import walkingPlant from "@/assets/Animations/walkingPlant.json";
-import overgrowthBigPlant from "@/assets/Animations/overgrowthPlantBig.json";
-import { useEffect, useState } from "react";
+import vasoPlanta from "@/assets/Animations/plantaVasoPendurado.json";
 
 
 export default function TitleHome() {
-    const [dpr, setDpr] = useState(() => window.devicePixelRatio || 1);
+    const [dpr, setDpr] = useState(1);
+    const [walkingAnimationPlay, setwalkingAnimationPlay] = useState(true);
+    const [vasoPlantaAnimationPlay, setVasoPlantaAnimationPlay] = useState(true);
 
     useEffect(() => {
         const updateDpr = () => {
@@ -23,6 +25,7 @@ export default function TitleHome() {
         window.addEventListener("resize", updateDpr);
         return () => window.removeEventListener("resize", updateDpr);
     }, []);
+
 
 
     return (
@@ -42,16 +45,18 @@ export default function TitleHome() {
             <Lottie
                 animationData={walkingPlant}
                 autoPlay
-                loop
+                onClick={() => setwalkingAnimationPlay(!walkingAnimationPlay)}
+                loop={walkingAnimationPlay}
                 className={`absolute z-10 
-                    ${dpr > 1 && dpr <= 1.5 ? "2xl:left-[11vw] 2xl:top-[45vh] 2xl:w-[24vw] 2xl:h-[24vh]" : "2xl:left-[10vw] 2xl:top-[40vh] 2xl:w-[25vw] 2xl:h-[25vh]"}`}
+                    ${dpr > 1 && dpr <= 1.5 ? "2xl:left-[16vw] 2xl:top-[45vh] 2xl:w-[14vw] 2xl:h-[24vh]" : "2xl:left-[15vw] 2xl:top-[40vh] 2xl:w-[15vw] 2xl:h-[25vh]"}`}
             />
 
             <Lottie
-                animationData={overgrowthBigPlant}
+                animationData={vasoPlanta}
                 autoPlay
-                loop={false}
-                className={`absolute z-10 ${dpr > 1 && dpr <= 1.5 ? "right-[13vw] 2xl:top-[38vh] 2xl:w-[24vw] 2xl:h-[24vh]" : "right-[12vw] 2xl:top-[35vh] 2xl:w-[25vw] 2xl:h-[25vh] "}`}
+                onClick={() => setVasoPlantaAnimationPlay(!vasoPlantaAnimationPlay)}
+                loop={vasoPlantaAnimationPlay}
+                className={`absolute z-10 ${dpr > 1 && dpr <= 1.5 ? "right-[16vw] 2xl:top-[53vh] 2xl:w-[14vw] 2xl:h-[24vh]" : "right-[14vw] 2xl:top-[48vh] 2xl:w-[15vw] 2xl:h-[25vh] "}`}
             />
 
 

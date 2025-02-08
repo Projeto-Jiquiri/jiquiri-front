@@ -15,12 +15,12 @@ export default function HomeBanner() {
         <div className="flex flex-1 flex-col justify-center items-center 2xl:mt-8 bg-Dark_Green_Jiquiri">
             <div className="flex flex-1 justify-center items-center 2xl:w-screen 2xl:p-16 2xl:gap-20">
                 <div className="flex justify-center items-center 2xl:gap-16">
-                    <p className=" text-White_Jiquiri font-poppins font-light 2xl:text-lg 2xl:w-80 text-center">Lorem ipsum dolor sit amet consectetur. Quis lorem massa tempus neque fringilla. Malesuada vulputate cursus interdum nunc sapien nunc.</p>
+                    <p className=" text-White_Jiquiri font-poppins font-light 2xl:text-lg 2xl:w-60 text-center">Lorem ipsum dolor sit amet consectetur. Quis lorem massa tempus neque fringilla. Malesuada vulputate cursus interdum nunc sapien nunc.</p>
 
                     <Image
                         src={dividerComponent}
                         alt="dividerComponent"
-                        className="2xl:w-2 select-none"
+                        className="2xl:w-2 2xl:h-auto select-none"
                         draggable={false}
                     />
                 </div>
@@ -29,7 +29,7 @@ export default function HomeBanner() {
                     <Image
                         src={logo}
                         alt="logo-banner"
-                        className="2xl:w-1/4 select-none"
+                        className="2xl:w-[50%] 2xl:h-auto select-none"
                         draggable={false}
                     />
                     <h3 className="text-White_Jiquiri font-catilde tracking-wider 2xl:text-4xl">JIQUIRI</h3>
@@ -39,7 +39,7 @@ export default function HomeBanner() {
                     <Image
                         src={dividerComponent}
                         alt="dividerComponent"
-                        className="2xl:w-2 select-none"
+                        className="2xl:w-2 2xl:h-auto select-none"
                         draggable={false}
                     />
 
