@@ -1,11 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import GreenFabricAnimation from "@/components/animations/greenFabric";
 import DefaultFooter from "@/components/defaultFooter";
 import { VerticalDividerDashed } from "@/components/divider";
 import Header from "@/components/header";
+import LottieAnimation from "@/components/animations/animationLottie";
 
+import GreenFabricAnimation from "@/assets/Animations/greenFabric.json";
 import ProfYomara from "@/assets/PNG/Prof_yomara.png";
 import ProfTiago from "@/assets/PNG/prof_Tiago.png";
 
@@ -22,7 +23,14 @@ export default function SobrePage() {
                         <p className="font-poppins font-light text-center text-Gray_Jiquiri 2xl:text-xl 2xl:w-80 ">Lorem ipsum dolor sit amet consectetur.</p>
                     </div>
 
-                    <GreenFabricAnimation />
+                    <div>
+                        <LottieAnimation
+                            animationData={GreenFabricAnimation}
+                            loop
+                            autoPlay
+                            className="2xl:w-[40vw] 2xl:h-[30vw]"
+                        />
+                    </div>
 
                     <div className="flex flex-col justify-center items-center 2xl:w-[35%]">
                         <p className="font-poppins font-light text-black 2xl:text-lg text-center">Lorem ipsum dolor sit amet consectetur. Suscipit dictum eu suspendisse cras tellus lectus urna cras. Lectus nunc convallis dictum eget porta platea turpis tempor dignissim. Facilisi faucibus donec enim orci. Tempus aliquam tincidunt non eros massa pharetra. Neque metus et nisl ac eu odio.
