@@ -56,7 +56,7 @@ export default function TitleHome() {
                 autoPlay
                 onClick={() => setVasoPlantaAnimationPlay(!vasoPlantaAnimationPlay)}
                 loop={vasoPlantaAnimationPlay}
-                className={`absolute z-10 ${dpr > 1 && dpr <= 1.5 ? "right-[16vw] 2xl:top-[53vh] 2xl:w-[14vw] 2xl:h-[24vh]" : "right-[14vw] 2xl:top-[48vh] 2xl:w-[15vw] 2xl:h-[25vh] "}`}
+                className={`absolute z-10 ${dpr > 1 && dpr <= 1.5 ? "right-[16vw] 2xl:top-[53vh] 2xl:w-[14vw] 2xl:h-[24vh]" : "right-[15vw] 2xl:top-[50vh] 2xl:w-[15vw] 2xl:h-[25vh] "}`}
             />
 
 
