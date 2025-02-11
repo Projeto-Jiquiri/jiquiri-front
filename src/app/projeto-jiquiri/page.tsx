@@ -90,12 +90,12 @@ export default function ProjetoJiquiriPage() {
                         </div>
                     </div>
 
-                    <DefaultFooter someFooter />
+                </div>
 
-                    <div className="absolute 2xl:top-[35%] 2xl:right-[3.5%]">
-                        <VerticalDividerDashed />
-                    </div>
+                <DefaultFooter someFooter />
 
+                <div className="absolute 2xl:top-[35%] 2xl:right-[3.5%]">
+                    <VerticalDividerDashed />
                 </div>
             </main>
         </div>
