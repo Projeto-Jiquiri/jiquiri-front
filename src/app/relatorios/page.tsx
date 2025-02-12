@@ -10,6 +10,7 @@ import divisorVertical from "@/assets/SVG/dividerVerticalGray.svg";
 import LottieAnimation from "@/components/animations/animationLottie";
 import plantGrowth from "@/assets/Animations/overgrowthPlantSmall.json";
 import { useDprStore } from "@/context/generalStore";
+import { BarChartComponent } from "@/components/charts/barChart";
 
 
 export default function Relatorios() {
@@ -36,7 +37,7 @@ export default function Relatorios() {
                         <p className="font-poppins font-light text-center text-Gray_Jiquiri 2xl:text-xl 2xl:w-80 ">Lorem ipsum dolor sit amet consectetur.</p>
                     </div>
 
-                    <div className="flex flex-col justify-center items-center 2xl:gap-4">
+                    <div className="flex flex-col justify-center items-center 2xl:gap-16">
                         <div className="flex w-screen justify-center items-center 2xl:gap-6">
                             <AreaChartComponent />
                             <div>
@@ -47,6 +48,10 @@ export default function Relatorios() {
                                 />
                             </div>
                             <RadarChartComponent />
+                        </div>
+
+                        <div className="flex w-screen justify-center items-center 2xl:gap-6">
+                            <BarChartComponent />
                         </div>
                     </div>
 
