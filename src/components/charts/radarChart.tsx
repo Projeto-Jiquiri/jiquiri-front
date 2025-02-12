@@ -34,7 +34,7 @@ const chartConfig = {
 export function RadarChartComponent() {
     return (
         <Card className="shadow-lg">
-            <CardHeader className="items-start pb-4">
+            <CardHeader className="items-start pb-4 text-White_Jiquiri">
                 <CardTitle>Radar - Meses Anteriores</CardTitle>
                 <CardDescription>
                     Temperatura e umidade dos meses
