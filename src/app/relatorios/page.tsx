@@ -11,6 +11,7 @@ import LottieAnimation from "@/components/animations/animationLottie";
 import plantGrowth from "@/assets/Animations/overgrowthPlantSmall.json";
 import { useDprStore } from "@/context/generalStore";
 import { BarChartComponent } from "@/components/charts/barChart";
+import { MiniBarComponent } from "@/components/charts/miniBarChart";
 
 
 export default function Relatorios() {
@@ -52,6 +53,7 @@ export default function Relatorios() {
 
                         <div className="flex w-screen justify-center items-center 2xl:gap-6">
                             <BarChartComponent />
+                            <MiniBarComponent />
                         </div>
                     </div>
 
