@@ -36,7 +36,7 @@ export function MiniBarComponent() {
     return (
         <Card className="shadow-lg 2xl:w-6/12">
             <CardHeader>
-                <CardTitle>Tooltip - Icons</CardTitle>
+                <CardTitle>Tooltip</CardTitle>
                 <CardDescription>Tooltip with icons.</CardDescription>
             </CardHeader>
             <CardContent>
