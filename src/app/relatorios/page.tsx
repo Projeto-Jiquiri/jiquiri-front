@@ -107,6 +107,7 @@ export default function Relatorios() {
                 <div className="absolute 2xl:top-[55%] 2xl:right-[3.5%]">
                     <VerticalDividerDashed />
                 </div>
+
             </main>
         </div>
     )
