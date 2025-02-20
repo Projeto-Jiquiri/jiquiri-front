@@ -15,6 +15,7 @@ import { BarChartComponent } from "@/components/charts/barChart";
 import { MiniBarComponent } from "@/components/charts/miniBarChart";
 import CalendarComponent from "@/components/calendarComponent";
 import DefaultFooter from "@/components/defaultFooter";
+import { VerticalDividerDashed } from "@/components/divider";
 
 
 export default function Relatorios() {
@@ -102,6 +103,10 @@ export default function Relatorios() {
                     loop={false}
                     className={`absolute z-10 ${dpr > 1 && dpr <= 1.5 ? "right-[9vw] 2xl:top-[36.6vh] 2xl:w-[13vw] 2xl:h-[18vh]" : "right-[13vw] 2xl:top-[26.5vh] 2xl:w-[10vw] 2xl:h-[15vh] "}`}
                 />
+
+                <div className="absolute 2xl:top-[55%] 2xl:right-[3.5%]">
+                    <VerticalDividerDashed />
+                </div>
             </main>
         </div>
     )
