@@ -17,12 +17,13 @@ import {
     ChartTooltipContent,
 } from "@/components/ui/chart"
 
-import { weatherData } from "@/constants/weatherData";
+import { weatherDataWeek } from "@/constants/weatherData";
+import { colors } from "@/styles/colors"
 
 const chartConfig = {
     temperature: {
         label: "Temperatura",
-        color: "hsl(var(--chart-1))",
+        color: colors.Orange_Jiquiri,
         icon: Footprints,
     },
     humidity: {
@@ -34,14 +35,14 @@ const chartConfig = {
 
 export function MiniBarComponent() {
     return (
-        <Card className="shadow-lg 2xl:w-6/12">
+        <Card className="shadow-lg 2xl:w-3/12">
             <CardHeader>
-                <CardTitle>Tooltip</CardTitle>
-                <CardDescription>Tooltip with icons.</CardDescription>
+                <CardTitle>Semanal</CardTitle>
+                <CardDescription>Gráfico Semanal</CardDescription>
             </CardHeader>
             <CardContent>
                 <ChartContainer config={chartConfig}>
-                    <BarChart accessibilityLayer data={weatherData}>
+                    <BarChart accessibilityLayer data={weatherDataWeek}>
                         <XAxis
                             dataKey="date"
                             tickLine={false}
@@ -56,13 +57,13 @@ export function MiniBarComponent() {
                         <Bar
                             dataKey="temperature"
                             stackId="a"
-                            fill="var(--color-running)"
+                            fill={colors.Orange_Jiquiri}
                             radius={[0, 0, 4, 4]}
                         />
                         <Bar
                             dataKey="humidity"
                             stackId="a"
-                            fill="var(--color-swimming)"
+                            fill="hsl(var(--chart-2))"
                             radius={[4, 4, 0, 0]}
                         />
                         <ChartTooltip
