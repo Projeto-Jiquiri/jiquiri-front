@@ -53,7 +53,8 @@ export default function EquipePage() {
                     </div>
 
                 </div>
-                <DefaultFooter someFooter />
+              
+                <DefaultFooter />
 
                 <div className="absolute 2xl:top-[35%] 2xl:left-[3.5%]">
                     <VerticalDividerDashed />
