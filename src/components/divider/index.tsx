@@ -8,7 +8,7 @@ export function VerticalDividerDashed() {
         <Image
             src={verticalDividerDashed}
             alt="Vertical Divider Dashed"
-            className="2xl:w-[1vw] 2xl:h-[60vh] select-none"
+            className="xl:w-[1vw] xl:h-[55vh] 2xl:w-[1vw] 2xl:h-[60vh] select-none"
             draggable={false}
         />
     )

@@ -16,15 +16,15 @@ export default function Home() {
 
         <TitleHome />
 
-        <div className="relative flex justify-center items-center 2xl:my-16 w-full">
-          <div className="absolute 2xl:left-[3.5%]">
+        <div className="relative flex justify-center items-center xl:my-14 2xl:my-16 w-full">
+          <div className="absolute xl:left-[3%] 2xl:left-[3.5%]">
             <VerticalDividerDashed />
           </div>
           <Image
             src={Hero}
             alt="Hero"
             priority
-            className="2xl:w-[45%] 2xl:h-[45%] select-none"
+            className="xl:w-[50%] xl:h-[50%] 2xl:w-[45%] 2xl:h-[45%] select-none"
             draggable={false}
           />
         </div>
