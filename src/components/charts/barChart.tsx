@@ -49,7 +49,7 @@ export function BarChartComponent() {
     )
 
     return (
-        <Card className="shadow-lg 2xl:w-6/12">
+        <Card className="shadow-lg 2xl:w-10/12">
             <CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
                 <div className="flex flex-1 flex-col text-White_Jiquiri justify-center gap-1 px-6 py-5 sm:py-6">
                     <CardTitle className="flex items-center gap-2">

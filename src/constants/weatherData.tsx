@@ -95,6 +95,17 @@ export const monthlyAverages = [
 ];
 
 
+export const weatherDataWeek = [
+    { date: "2024-04-01", temperature: 22, humidity: 65 },
+    { date: "2024-04-02", temperature: 24, humidity: 60 },
+    { date: "2024-04-03", temperature: 21, humidity: 70 },
+    { date: "2024-04-04", temperature: 26, humidity: 55 },
+    { date: "2024-04-05", temperature: 28, humidity: 50 },
+    { date: "2024-04-06", temperature: 27, humidity: 52 },
+    { date: "2024-04-07", temperature: 23, humidity: 68 },
+] as WeatherDataType;
+
+
 
 
 
