@@ -10,11 +10,13 @@ const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 import walkingPlant from "@/assets/Animations/walkingPlant.json";
 import vasoPlanta from "@/assets/Animations/plantaVasoPendurado.json";
+
 import { useDprStore } from "@/context/generalStore";
 
 
 export default function TitleHome() {
     const { dpr, setDpr } = useDprStore();
+
     const [walkingAnimationPlay, setwalkingAnimationPlay] = useState(true);
     const [vasoPlantaAnimationPlay, setVasoPlantaAnimationPlay] = useState(true);
 
@@ -26,6 +28,7 @@ export default function TitleHome() {
         window.addEventListener("resize", updateDpr);
         return () => window.removeEventListener("resize", updateDpr);
     }, [dpr, setDpr]);
+
 
 
 

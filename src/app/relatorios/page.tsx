@@ -102,6 +102,7 @@ export default function Relatorios() {
                     loop={false}
                     className={`absolute z-10 ${dpr > 1 && dpr <= 1.5 ? "right-[9vw] 2xl:top-[36.6vh] 2xl:w-[13vw] 2xl:h-[18vh]" : "right-[13vw] 2xl:top-[26.5vh] 2xl:w-[10vw] 2xl:h-[15vh] "}`}
                 />
+
             </main>
         </div>
     )
