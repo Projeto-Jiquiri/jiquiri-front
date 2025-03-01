@@ -20,6 +20,7 @@ export default function TitleHome() {
     const [walkingAnimationPlay, setwalkingAnimationPlay] = useState(true);
     const [vasoPlantaAnimationPlay, setVasoPlantaAnimationPlay] = useState(true);
 
+
     useEffect(() => {
         const updateDpr = () => {
             setDpr(window.devicePixelRatio);
@@ -28,8 +29,6 @@ export default function TitleHome() {
         window.addEventListener("resize", updateDpr);
         return () => window.removeEventListener("resize", updateDpr);
     }, [dpr, setDpr]);
-
-
 
 
     return (
