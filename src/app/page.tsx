@@ -3,20 +3,36 @@ import Image from "next/image";
 import Header from "@/components/header";
 import TitleHome from "@/components/titleHome";
 
-import Hero from "@/assets/PNG/Hero.png";
+import MenuSheetMobile from "@/components/header/sheetMenu";
 import { VerticalDividerDashed } from "@/components/divider";
 import HomeBanner from "@/components/homeBanner";
 import DefaultFooter from "@/components/defaultFooter";
+
+import Hero from "@/assets/PNG/Hero.png";
+import Logo from '@/assets/PNG/logo.png';
+
 
 export default function Home() {
   return (
     <div className="flex flex-1 justify-center items-center overflow-hidden">
       <main className="flex flex-col justify-center items-center">
-        <Header />
+        <div className="flex flex-1 justify-center items-center w-full max-lg:hidden">
+          <Header />
+        </div>
 
-        <TitleHome />
+        <div className="max-lg:flex flex-1 hidden justify-between p-4 items-center w-screen max-lg:visible">
+          <MenuSheetMobile />
+          <Image
+            alt="Logo"
+            src={Logo}
+            className="w-14 h-14"
 
-        <div className="relative flex justify-center items-center w-full lg:my-12 xl:my-14 2xl:my-16">
+          />
+        </div>
+
+        {/* <TitleHome /> */}
+
+        {/* <div className="relative flex justify-center items-center w-full lg:my-12 xl:my-14 2xl:my-16">
           <div className="absolute lg:left-[3%] xl:left-[3%] 2xl:left-[3.5%]">
             <VerticalDividerDashed />
           </div>
@@ -27,11 +43,11 @@ export default function Home() {
             className="lg:w-[50%] lg:h-[50%] xl:w-[50%] xl:h-[50%] 2xl:w-[45%] 2xl:h-[45%] select-none"
             draggable={false}
           />
-        </div>
+        </div> */}
 
-        <HomeBanner />
+        {/* <HomeBanner /> */}
 
-        <DefaultFooter />
+        {/* <DefaultFooter /> */}
       </main>
     </div>
   );
