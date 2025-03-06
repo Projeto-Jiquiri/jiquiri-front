@@ -16,19 +16,7 @@ export default function Home() {
   return (
     <div className="flex flex-1 justify-center items-center overflow-hidden">
       <main className="flex flex-col justify-center items-center">
-        <div className="flex flex-1 justify-center items-center w-full max-lg:hidden">
-          <Header />
-        </div>
-
-        <div className="max-lg:flex flex-1 hidden justify-between p-4 items-center w-screen max-lg:visible">
-          <MenuSheetMobile />
-          <Image
-            alt="Logo"
-            src={Logo}
-            className="w-14 h-14"
-
-          />
-        </div>
+        <Header />
 
         {/* <TitleHome /> */}
 

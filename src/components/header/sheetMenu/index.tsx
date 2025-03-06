@@ -39,23 +39,23 @@ export default function MenuSheetMobile() {
                     </SheetDescription>
                 </SheetHeader>
                 <div className="flex flex-1 mt-8 md:mt-10 flex-col justify-center items-center gap-8 md:gap-10">
-                    <Link onClickCapture={() => setModalOpen(false)} href="/" onClick={() => window.location.reload()} className="flex flex-1 active:bg-white-EVO/15 px-16 md:px-28 py-1 md:py-4 justify-center items-center gap-2 md:gap-3">
+                    <Link onClickCapture={() => setModalOpen(false)} href="/" className="flex flex-1 active:bg-Gray_Jiquiri/5 px-16 md:px-28 py-1 md:py-4 justify-center items-center gap-2 md:gap-3">
                         <HomeIcon size={20} color={colors.Black_Jiquiri} />
                         <h3 className="font-poppins text-lg md:text-xl">Início</h3>
                     </Link>
-                    <Link onClickCapture={() => setModalOpen(false)} href="/projeto-jiquiri" className="flex flex-1 active:bg-white-EVO/15 px-14 md:px-22 py-1 md:py-4 justify-center items-center gap-2 md:gap-3">
+                    <Link onClickCapture={() => setModalOpen(false)} href="/projeto-jiquiri" className="flex flex-1 active:bg-Gray_Jiquiri/5 px-14 md:px-22 py-1 md:py-4 justify-center items-center gap-2 md:gap-3">
                         <TreeDeciduous size={20} color={colors.Black_Jiquiri} />
                         <h3 className="font-poppins text-lg md:text-xl">Jiquiri?</h3>
                     </Link>
-                    <Link onClickCapture={() => setModalOpen(false)} href="/relatorios" className="flex flex-1 active:bg-white-EVO/15 px-14 md:px-22 py-1 md:py-4 justify-center items-center gap-2 md:gap-3">
+                    <Link onClickCapture={() => setModalOpen(false)} href="/relatorios" className="flex flex-1 active:bg-Gray_Jiquiri/5 px-14 md:px-22 py-1 md:py-4 justify-center items-center gap-2 md:gap-3">
                         <NotebookText size={20} color={colors.Black_Jiquiri} />
                         <h3 className="font-poppins text-lg md:text-xl">Relatórios</h3>
                     </Link>
-                    <Link onClickCapture={() => setModalOpen(false)} href="/equipe" className="flex flex-1 active:bg-white-EVO/15 px-14 md:px-22 py-1 md:py-4 justify-center items-center gap-2 md:gap-3">
+                    <Link onClickCapture={() => setModalOpen(false)} href="/equipe" className="flex flex-1 active:bg-Gray_Jiquiri/5 px-14 md:px-22 py-1 md:py-4 justify-center items-center gap-2 md:gap-3">
                         <Users size={20} color={colors.Black_Jiquiri} />
                         <h3 className="font-poppins text-lg md:text-xl">Equipe</h3>
                     </Link>
-                    <Link onClickCapture={() => setModalOpen(false)} href="/sobre" className="flex flex-1 active:bg-white-EVO/15 px-14 md:px-22 py-1 md:py-4 justify-center items-center gap-2 md:gap-3">
+                    <Link onClickCapture={() => setModalOpen(false)} href="/sobre" className="flex flex-1 active:bg-Gray_Jiquiri/5 px-14 md:px-22 py-1 md:py-4 justify-center items-center gap-2 md:gap-3">
                         <Info size={20} color={colors.Black_Jiquiri} />
                         <h3 className="font-poppins text-lg md:text-xl">Sobre</h3>
                     </Link>
