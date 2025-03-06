@@ -22,10 +22,10 @@ export default function MenuSheetMobile() {
 
     return (
         <Sheet open={modalOpen} onOpenChange={setModalOpen}>
-            <SheetTrigger>
+            <SheetTrigger className="hover-card">
                 <Menu size={28} color={colors.Black_Jiquiri} />
             </SheetTrigger>
-            <SheetContent className="w-[200px] md:w-[300px] bg-White_Jiquiri text-Black_Jiquiri border-l-Gray_Jiquiri" side='left'>
+            <SheetContent className="w-[200px] md:w-[300px] bg-White_Jiquiri text-Black_Jiquiri border-l-Gray_Jiquiri" side='right'>
                 <SheetHeader className="flex flex-1 flex-col items-center justify-center border-b-[1px] pb-4 border-Gray_Jiquiri/35">
                     <Image src={Logo} alt="Logo" className="size-20 md:size-28" />
                     <SheetTitle className="font-Roc-Grotesk text-2xl text-Black_Jiquiri md:text-3xl my-2">Jiquiri</SheetTitle>

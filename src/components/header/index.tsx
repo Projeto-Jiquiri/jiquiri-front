@@ -48,14 +48,16 @@ export default function Header() {
                 </div>
             </header>
 
-            <div className="max-lg:flex flex-1 hidden justify-between p-4 items-center w-screen max-lg:visible">
-                <MenuSheetMobile />
-                <Image
-                    alt="Logo"
-                    src={Logo}
-                    className="w-14 h-14"
+            <div className="max-lg:flex flex-1 hidden justify-between pt-2 p-4 items-center w-screen max-lg:visible">
+                <Link href="/" className="hover-card">
+                    <Image
+                        alt="Logo"
+                        src={Logo}
+                        className="w-14 h-14 md:w-16 md:h-16"
 
-                />
+                    />
+                </Link>
+                <MenuSheetMobile />
             </div>
         </>
     )
