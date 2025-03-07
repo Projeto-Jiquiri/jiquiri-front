@@ -28,7 +28,9 @@ export default function Home() {
             priority
             className="w-[80%] h-[80%] md:w-[80%] md:h-[80%] lg:w-[50%] lg:h-[50%] xl:w-[50%] xl:h-[50%] 2xl:w-[45%] 2xl:h-[45%] select-none"
             draggable={false}
+
           />
+
         </div>
 
         <HomeBanner />

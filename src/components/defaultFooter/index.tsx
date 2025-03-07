@@ -49,7 +49,7 @@ export default function DefaultFooter({ someFooter }: { someFooter?: boolean }) 
                             </h5>
                         </div>
 
-                        <div className="flex justify-center items-center gap-1 md:gap-24 lg:gap-32 xl:gap-36 2xl:gap-40">
+                        <div className="flex justify-center items-center gap-16 md:gap-24 lg:gap-32 xl:gap-36 2xl:gap-40">
                             <Image
                                 alt="UFPA Logo"
                                 src={UFPALogo}
