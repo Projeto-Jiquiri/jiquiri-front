@@ -42,7 +42,7 @@ export default function DefaultFooter({ someFooter }: { someFooter?: boolean }) 
                         </div>
 
                         <div>
-                            <h5 className="text-sm md:text-base lg:text-sm xl:text-base 2xl:text-lg font-poppins font-light text-black text-center tracking-wider">
+                            <h5 className="text-sm md:text-base lg:text-base xl:text-base 2xl:text-lg font-poppins font-light text-black text-center tracking-wider">
                                 Av. dos Universitários, s/n  Jaderlândia,
                                 <p className="font-poppins font-normal">Castanhal, PA</p>
                                 68746-630

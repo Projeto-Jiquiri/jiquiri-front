@@ -35,7 +35,7 @@ const chartConfig = {
 
 export function MiniBarComponent() {
     return (
-        <Card className="shadow-lg 2xl:w-5/12">
+        <Card className="shadow-lg xl:w-4/12 2xl:w-5/12">
             <CardHeader>
                 <CardTitle>Semanal</CardTitle>
                 <CardDescription>Gráfico Semanal</CardDescription>

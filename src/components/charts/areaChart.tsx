@@ -63,7 +63,7 @@ export function AreaChartComponent() {
     })
 
     return (
-        <Card className="2xl:w-6/12 shadow-lg">
+        <Card className="xl:w-5/12 2xl:w-6/12 shadow-lg">
             <CardHeader className="flex items-center gap-2 space-y-0 border-b py-5 sm:flex-row">
                 <div className="grid flex-1 gap-1 text-White_Jiquiri text-center sm:text-left">
                     <CardTitle className="flex items-center gap-2">

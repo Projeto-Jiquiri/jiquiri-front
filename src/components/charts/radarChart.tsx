@@ -45,7 +45,7 @@ export function RadarChartComponent() {
             <CardContent>
                 <ChartContainer
                     config={chartConfig}
-                    className="mx-auto aspect-square 2xl:w-[290px] 2xl:h-[250px]"
+                    className="mx-auto aspect-square xl:w-[16vw] xl:h-[29vh] 2xl:w-[16vw] 2xl:h-[27vh]"
                 >
                     <RadarChart
                         data={monthlyAverages}
