@@ -23,13 +23,13 @@ export default function EquipePage() {
             <main className="flex flex-col justify-center items-center">
                 <Header />
 
-                <div className="flex flex-1 flex-col justify-center items-center lg:mt-10 lg:gap-12 xl:mt-14 xl:gap-14 2xl:mt-16 2xl:gap-16">
-                    <div className="flex flex-col justify-center items-center lg:gap-6 xl:gap-8 2xl:gap-10">
-                        <h1 className="font-catilde text-Black_Jiquiri lg:text-5xl xl:text-6xl 2xl:text-7xl">Equipe</h1>
+                <div className="flex flex-1 flex-col justify-center items-center mt-4 gap-8 md:mt-8 md:gap-10 lg:mt-10 lg:gap-12 xl:mt-14 xl:gap-14 2xl:mt-16 2xl:gap-16">
+                    <div className="flex flex-col justify-center items-center gap-4 md:gap-4 lg:gap-6 xl:gap-8 2xl:gap-10">
+                        <h1 className="font-catilde text-Black_Jiquiri text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl">Equipe</h1>
 
-                        <div className="flex flex-col justify-center items-center lg:gap-6 xl:gap-8 2xl:gap-8">
-                            <h3 className="font-poppins text-Black_Jiquiri text-center lg:w-80 lg:text-lg xl:text-xl xl:w-96 2xl:text-2xl 2xl:w-96">Lorem ipsum dolor sit amet consectetur.</h3>
-                            <p className="font-poppins text-Black_Jiquiri font-extralight text-center lg:w-[40vw] lg:text-lg xl:w-[40vw] xl:text-xl 2xl:w-[35vw] 2xl:text-xl">
+                        <div className="flex flex-col justify-center items-center gap-4 md:gap-4 lg:gap-6 xl:gap-8 2xl:gap-8">
+                            <h3 className="font-poppins text-Black_Jiquiri text-center w-60 text-base md:w-72 md:text-xl lg:w-80 lg:text-lg xl:text-xl xl:w-96 2xl:text-2xl 2xl:w-96">Lorem ipsum dolor sit amet consectetur.</h3>
+                            <p className="font-poppins text-Black_Jiquiri font-extralight text-center w-[65vw] text-base md:w-[55vw] md:text-lg lg:w-[40vw] lg:text-lg xl:w-[40vw] xl:text-xl 2xl:w-[35vw] 2xl:text-xl">
                                 Lorem ipsum dolor sit amet consectetur. Morbi maecenas est nisi pellentesque sit nisl. Morbi faucibus blandit turpis nec duis ut pellentesque venenatis tellus.
                                 <br />
                                 <br />
@@ -42,22 +42,22 @@ export default function EquipePage() {
                         <Image
                             alt="Equipe"
                             src={equipeImage}
-                            className="lg:w-[45vw] xl:w-[40vw] 2xl:w-[38vw] 2xl:h-auto"
+                            className="w-[75vw] md:w-[65vw] lg:w-[45vw] xl:w-[40vw] 2xl:w-[38vw] h-auto"
                         />
                     </div>
 
-                    <div className="flex flex-col justify-center items-center lg:gap-4 xl:gap-4 2xl:gap-8">
-                        <h3 className="font-catilde font-semibold text-center text-Black_Jiquiri lg:w-72 lg:text-xl xl:w-80 xl:text-2xl 2xl:w-80 2xl:text-3xl">Tecnologias Utilizadas no Projeto</h3>
-                        <p className="font-poppins text-Black_Jiquiri font-extralight text-center lg:w-[40vw] lg:text-lg xl:w-[40vw] xl:text-xl 2xl:w-[35vw] 2xl:text-xl">
+                    <div className="flex flex-col justify-center items-center gap-4 md:gap-4 lg:gap-4 xl:gap-4 2xl:gap-8">
+                        <h3 className="font-catilde font-semibold text-center text-Black_Jiquiri w-60 text-xl md:w-72 md:text-2xl lg:w-72 lg:text-xl xl:w-80 xl:text-2xl 2xl:w-80 2xl:text-3xl">Tecnologias Utilizadas no Projeto</h3>
+                        <p className="font-poppins text-Black_Jiquiri font-extralight text-center w-[65vw] text-base md:w-[60vw] md:text-xl lg:w-[40vw] lg:text-lg xl:w-[40vw] xl:text-xl 2xl:w-[35vw] 2xl:text-xl">
                             Lorem ipsum dolor sit amet consectetur. Morbi maecenas est nisi pellentesque sit nisl. Morbi faucibus blandit turpis nec duis ut pellentesque venenatis tellus.
                             Porttitor tristique blandit proin commodo bibendum commodo integer
                         </p>
                     </div>
 
-                    <div className="flex flex-col justify-center items-center lg:gap-12 xl:gap-14 2xl:gap-16">
-                        <div className="flex flex-col justify-center items-center lg:gap-6 xl:gap-8 2xl:gap-10">
-                            <h4 className="font-catilde text-Black_Jiquiri lg:text-xl xl:text-2xl 2xl:text-3xl">Front-end</h4>
-                            <div className="grid lg:grid-cols-3 xl:grid-cols-3 lg:gap-8 xl:gap-10 2xl:grid-cols-3 2xl:gap-10">
+                    <div className="flex flex-col justify-center items-center gap-8 md:gap-10 lg:gap-12 xl:gap-14 2xl:gap-16">
+                        <div className="flex flex-col justify-center items-center gap-6 md:gap-6 lg:gap-6 xl:gap-8 2xl:gap-10">
+                            <h4 className="font-catilde text-Black_Jiquiri text-xl md:text-2xl lg:text-xl xl:text-2xl 2xl:text-3xl">Front-end</h4>
+                            <div className="grid grid-cols-2 gap-6 md:grid-cols-3 md:gap-8 lg:grid-cols-3 xl:grid-cols-3 lg:gap-8 xl:gap-10 2xl:grid-cols-3 2xl:gap-10">
                                 <TechCube title="React" image={reactLogo} url="https://react.dev/" alt="React Logo" />
                                 <TechCube title="Next" image={nextLogo} url="https://nextjs.org/" borderHighlighter alt="Next Logo" />
                                 <TechCube title="Tailwind" image={tailwindLogo} url="https://tailwindcss.com/" alt="Tailwind Logo" />
@@ -68,9 +68,9 @@ export default function EquipePage() {
                             </div>
                         </div>
 
-                        <div className="flex flex-col justify-center items-center lg:gap-6 xl:gap-8 2xl:gap-10">
-                            <h4 className="font-catilde text-Black_Jiquiri lg:text-xl xl:text-2xl 2xl:text-3xl">Back-end</h4>
-                            <div className="grid lg:grid-cols-3 xl:grid-cols-3 lg:gap-8 xl:gap-10 2xl:grid-cols-3 2xl:gap-10">
+                        <div className="flex flex-col justify-center items-center gap-6 md:gap-6 lg:gap-6 xl:gap-8 2xl:gap-10">
+                            <h4 className="font-catilde text-Black_Jiquiri text-xl md:text-2xl lg:text-xl xl:text-2xl 2xl:text-3xl">Back-end</h4>
+                            <div className="grid grid-cols-2 gap-6 md:grid-cols-3 md:gap-8 lg:grid-cols-3 xl:grid-cols-3 lg:gap-8 xl:gap-10 2xl:grid-cols-3 2xl:gap-10">
                                 <TechCube title="Python" image={pythonLogo} url="https://www.python.org/" alt="Python Logo" />
                                 <TechCube title="Flask" image={flaskLogo} url="https://flask.palletsprojects.com/en/stable/" alt="Flask Logo" />
                             </div>
@@ -91,7 +91,7 @@ export default function EquipePage() {
 
                 <DefaultFooter />
 
-                <div className="absolute lg:top-[35%] lg:left-[3.5%] xl:top-[35%] xl:left-[3.5%] 2xl:top-[35%] 2xl:left-[3.5%]">
+                <div className="absolute top-[50%] left-[3.5%] md:top-[35%] md:left-[3.5%] lg:top-[35%] lg:left-[3.5%] xl:top-[35%] xl:left-[3.5%] 2xl:top-[35%] 2xl:left-[3.5%]">
                     <VerticalDividerDashed />
                 </div>
             </main>
