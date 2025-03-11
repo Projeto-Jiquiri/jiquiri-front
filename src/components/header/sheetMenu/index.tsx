@@ -28,7 +28,7 @@ export default function MenuSheetMobile() {
             <SheetContent className="w-[200px] md:w-[300px] bg-White_Jiquiri text-Black_Jiquiri border-l-Gray_Jiquiri" side='right'>
                 <SheetHeader className="flex flex-1 flex-col items-center justify-center border-b-[1px] pb-4 border-Gray_Jiquiri/35">
                     <Image src={Logo} alt="Logo" className="size-20 md:size-28" />
-                    <SheetTitle className="font-Roc-Grotesk text-2xl text-Black_Jiquiri md:text-3xl my-2">Jiquiri</SheetTitle>
+                    <SheetTitle className="font-catilde text-2xl text-Black_Jiquiri md:text-3xl my-2">Jiquiri</SheetTitle>
                     <SheetDescription className="flex flex-1 py-4 md:py-4 items-center justify-center gap-14">
                         <Link href="http://" target="_blank" rel="noopener noreferrer">
                             <Instagram className="size-5 md:size-7" color={colors.Gray_Jiquiri} />
