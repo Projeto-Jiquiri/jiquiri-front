@@ -76,5 +76,5 @@ export default {
 			}
 		}
 	},
-	plugins: [tailwindAnimate],
+	plugins: [],
 } satisfies Config;
