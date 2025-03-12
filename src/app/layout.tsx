@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Roboto, Poppins } from "next/font/google";
 import localFont from 'next/font/local'
+import { ThemeProvider } from "@/components/theme-provider"
+
 import "./globals.css";
 
 const catilde = localFont({
@@ -54,11 +56,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" suppressHydrationWarning>
       <body
         className={`${poppins.variable} ${roboto.variable} ${catilde.variable} antialiased`}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
