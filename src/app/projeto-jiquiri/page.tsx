@@ -44,7 +44,7 @@ export default function ProjetoJiquiriPage() {
                         </p>
                     </div>
 
-                    <div className="flex justify-center items-center flex-row max-md:flex-col-reverse bg-Dark_Green_Jiquiri w-screen shadow gap-12 py-8 md:gap-8 md:py-8 lg:gap-20 lg:py-8 xl:gap-36 xl:py-6 2xl:gap-40 2xl:py-8">
+                    <div className="flex justify-center items-center flex-row max-md:flex-col-reverse bg-Dark_Green_Jiquiri w-screen shadow-sm gap-12 py-8 md:gap-8 md:py-8 lg:gap-20 lg:py-8 xl:gap-36 xl:py-6 2xl:gap-40 2xl:py-8">
                         <div className="flex flex-col justify-center items-center gap-4 md:gap-6 lg:gap-8 xl:gap-6 2xl:gap-8">
                             <h3 className="font-poppins text-White_Jiquiri text-center text-lg w-64 md:text-lg md:w-64 lg:text-lg lg:w-80 xl:text-lg xl:w-72 2xl:text-xl 2xl:w-80">Lorem ipsum dolor sit amet consectetur.</h3>
                             <p className="font-poppins font-extralight text-White_Jiquiri text-center text-base w-80 md:text-base md:w-72 lg:text-base lg:w-80 xl:text-base xl:w-80 2xl:text-lg 2xl:w-96">

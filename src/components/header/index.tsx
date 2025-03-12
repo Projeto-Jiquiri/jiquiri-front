@@ -39,7 +39,7 @@ export default function Header() {
                         </div>
 
                         <div className="flex justify-center items-center">
-                            <button className="flex justify-center items-center hover:opacity-90 gap-2 bg-Black_Jiquiri rounded-full text-White_Jiquiri font-poppins font-semibold text-center py-1.5 px-6 shadow lg:text-sm xl:text-base 2xl:text-lg">
+                            <button className="flex justify-center items-center hover:opacity-90 gap-2 bg-Black_Jiquiri rounded-full text-White_Jiquiri font-poppins font-semibold text-center py-1.5 px-6 shadow-sm lg:text-sm xl:text-base 2xl:text-lg">
                                 Chat
                                 <BotMessageSquare className="lg:size-5 xl:size-5 2xl:size-6" color={colors.White_Jiquiri} />
                             </button>
