@@ -1,6 +1,6 @@
 "use client"
 
-import { Footprints, Waves } from "lucide-react"
+import { Thermometer, Droplet } from "lucide-react"
 import { Bar, BarChart, XAxis } from "recharts"
 
 import {
@@ -23,13 +23,13 @@ import { colors } from "@/styles/colors"
 const chartConfig = {
     temperature: {
         label: "Temperatura",
-        color: colors.Orange_Jiquiri,
-        icon: Footprints,
+        color: colors.Purple_Jiquiri,
+        icon: Thermometer,
     },
     humidity: {
         label: "Umidade",
-        color: "hsl(var(--chart-2))",
-        icon: Waves,
+        color: "var(--chart-2)",
+        icon: Droplet,
     },
 } satisfies ChartConfig
 
@@ -63,7 +63,7 @@ export function MiniBarComponent() {
                         <Bar
                             dataKey="humidity"
                             stackId="a"
-                            fill="hsl(var(--chart-2))"
+                            fill="var(--chart-2)"
                             radius={[4, 4, 0, 0]}
                         />
                         <ChartTooltip
