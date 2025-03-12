@@ -45,7 +45,7 @@ export default function SobrePage() {
                     <VerticalDividerDashed />
                 </div>
 
-                <div className="flex flex-col w-screen justify-center items-center shadow bg-Dark_Green_Jiquiri py-2 gap-8 md:pt-4 md:pb-4 md:gap-6 lg:pt-6 lg:pb-6 lg:gap-8 xl:pt-6 xl:pb-6 xl:gap-8 2xl:pt-6 2xl:pb-8 2xl:gap-8">
+                <div className="flex flex-col w-screen justify-center items-center shadow-sm bg-Dark_Green_Jiquiri py-2 gap-8 md:pt-4 md:pb-4 md:gap-6 lg:pt-6 lg:pb-6 lg:gap-8 xl:pt-6 xl:pb-6 xl:gap-8 2xl:pt-6 2xl:pb-8 2xl:gap-8">
                     <div className="flex flex-col justify-center items-center gap-2 md:gap-4 lg:gap-2 xl:gap-2 2xl:gap-2">
                         <h1 className="font-catilde text-White_Jiquiri text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-5xl">Agradecimentos</h1>
                         <p className="text-White_Jiquiri font-poppins text-center font-light text-sm w-64 md:text-lg md:w-64 lg:text-base lg:w-64 xl:text-lg xl:w-72 2xl:text-xl 2xl:w-80">Lorem ipsum dolor sit amet consectetur.</p>
