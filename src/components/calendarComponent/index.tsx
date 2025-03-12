@@ -1,19 +1,15 @@
 'use client';
 
-import { useState } from "react";
 import { colors } from "@/styles/colors";
 import { Cloudy, CornerLeftDown, CornerRightDown, Droplet, Thermometer } from "lucide-react";
-import { Calendar } from "../ui/calendar";
-import { ptBR } from "date-fns/locale"
 import LottieAnimation from "../animations/animationLottie";
 
 import walkingPlant from "@/assets/Animations/walkingPlant.json";
 import teapot from "@/assets/Animations/robot.json";
+import { CalendarDatePick } from "../ui/calendar";
 
 
 export default function CalendarComponent() {
-    const [date, setDate] = useState<Date | undefined>(new Date())
-
 
     return (
         <div className="flex flex-col justify-center items-center gap-12 md:gap-12 lg:gap-16 xl:gap-16 2xl:gap-24">
@@ -36,12 +32,8 @@ export default function CalendarComponent() {
                     loop
                 />
 
-                <Calendar
-                    mode="single"
-                    locale={ptBR}
-                    selected={date}
-                    onSelect={setDate}
-                    className="rounded-xl border bg-black"
+                <CalendarDatePick
+
                 />
 
                 <LottieAnimation
