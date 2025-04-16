@@ -44,7 +44,7 @@ export default function CalendarComponent() {
                 />
             </div>
 
-            <div className="flex flex-row max-md:flex-col justify-center items-center gap-8 md:gap-20 lg:gap-40 xl:gap-40 2xl:gap-48">
+            <div className="flex flex-row max-md:flex-col justify-center items-center gap-8 md:gap-20 lg:gap-40 xl:gap-40 2xl:gap-56">
                 <div className="flex justify-center items-center gap-8 md:gap-20">
                     <div className="flex flex-col justify-center text-center items-center w-40 gap-4 md:w-40 md:gap-4 lg:w-36 lg:gap-4 xl:w-40 xl:gap-4 2xl:w-48 2xl:gap-4">
                         <h2 className="font-catilde font-light text-Gray_Jiquiri text-lg md:text-xl lg:text-lg xl:text-xl 2xl:text-2xl">Umidade Relativa do solo</h2>
@@ -63,7 +63,7 @@ export default function CalendarComponent() {
                     </div>
                 </div>
 
-                <div className="flex flex-col justify-center text-center items-center w-40 gap-4 md:w-40 md:gap-4 lg:w-36 lg:gap-4 xl:w-40 xl:gap-4 2xl:w-48 2xl:gap-4">
+                <div className="flex flex-col justify-center text-center items-center w-40 gap-4 md:w-40 md:gap-4 lg:w-36 lg:gap-4 xl:w-40 xl:gap-4 2xl:w-48 2xl:gap-4 lg:-ml-20 xl:-ml-24 2xl:-ml-32">
                     <h2 className="font-catilde font-light text-Gray_Jiquiri text-lg md:text-xl lg:text-lg xl:text-xl 2xl:text-2xl">Umidade Relativa do AR</h2>
                     <div className="flex justify-center items-center gap-2 md:gap-2 lg:gap-2 xl:gap-2 2xl:gap-2">
                         <span className="font-poppins text-Light_Green_Jiquiri font-semibold text-lg md:text-xl lg:text-lg xl:text-xl 2xl:text-2xl">32%</span>

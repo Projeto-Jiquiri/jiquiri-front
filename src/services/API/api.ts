@@ -1,18 +1,12 @@
-import axios, { AxiosPromise } from 'axios';
-import { ISensorData } from '../interfaces/allRecordsInterface';
+import axios from 'axios';
 
 const baseURL = process.env.NEXT_PUBLIC_API_URL || undefined;
 
+export const api = axios.create({
+    baseURL: baseURL,
+    headers: {
+        'Content-Type': 'application/json',
+    },
+})
 
-axios.defaults.withCredentials = true;
-
-export async function getAllRecords(): AxiosPromise<ISensorData> {
-    try {
-        const response = await axios.get<ISensorData>(baseURL + '/all_records');
-        return response;
-
-    } catch (error) {
-        console.error('Error fetching all records:', error);
-        throw error;
-    }
-}
+export default api
