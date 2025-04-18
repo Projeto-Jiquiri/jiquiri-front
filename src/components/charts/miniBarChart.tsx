@@ -20,6 +20,8 @@ import {
 
 import { colors } from "@/styles/colors"
 import { useWeeklyAverages } from "@/services/API/adapters/useWeekAverages"
+import { useDprStore } from "@/services/context/generalStore"
+import { useEffect } from "react"
 
 const chartConfig = {
     temperature: {
@@ -48,13 +50,27 @@ interface WeatherData {
 
 export function MiniBarComponent() {
     const { data, isLoading, isError, error } = useWeeklyAverages()
+    const { dpr, setDpr } = useDprStore();
+
+
+    useEffect(() => {
+        const updateDpr = () => {
+            setDpr(window.devicePixelRatio);
+        };
+
+        window.addEventListener("resize", updateDpr);
+        return () => window.removeEventListener("resize", updateDpr);
+    }, [dpr, setDpr]);
 
     if (isLoading) {
         return (
             <Card className="shadow-lg w-11/12 md:w-8/12 lg:h-[37.5vh] lg:w-[40vw] xl:w-[20vw] xl:h-[28vh] 2xl:w-[20vw] 2xl:h-[32vh]">
                 <CardHeader>
-                    <CardTitle>Média Semanal</CardTitle>
-                    <CardDescription>Gráfico Média Semanal</CardDescription>
+                    <CardTitle className="flex items-center gap-2 text-White_Jiquiri">
+                        Média Semanal
+                        <ThermometerSun size={18} className="text-Orange_Jiquiri" />
+                    </CardTitle>
+                    <CardDescription>Média Semanal de Temperatura e Umidade do Ar e Solo</CardDescription>
                 </CardHeader>
                 <CardContent>
                     <div className="flex justify-center items-center h-full w-full">
@@ -69,8 +85,11 @@ export function MiniBarComponent() {
         return (
             <Card className="shadow-lg w-11/12 md:w-8/12 lg:h-[37.5vh] lg:w-[40vw] xl:w-[20vw] xl:h-[28vh] 2xl:w-[20vw] 2xl:h-[32vh]">
                 <CardHeader>
-                    <CardTitle>Média Semanal</CardTitle>
-                    <CardDescription>Gráfico Média Semanal</CardDescription>
+                    <CardTitle className="flex items-center gap-2 text-White_Jiquiri">
+                        Média Semanal
+                        <ThermometerSun size={18} className="text-Orange_Jiquiri" />
+                    </CardTitle>
+                    <CardDescription>Média Semanal de Temperatura e Umidade do Ar e Solo</CardDescription>
                 </CardHeader>
                 <CardContent>
                     <div className="flex justify-center items-center h-full w-full">
@@ -89,7 +108,7 @@ export function MiniBarComponent() {
     }))
 
     return (
-        <Card className="shadow-lg w-11/12 md:w-8/12 lg:h-[37.5vh] lg:w-[40vw] xl:w-[20vw] xl:h-[28vh] 2xl:w-[20vw] 2xl:h-[32vh]">
+        <Card className={`${dpr > 1 && dpr <= 1.5 ? 'shadow-lg w-11/12 md:w-8/12 lg:h-[37.5vh] lg:w-[40vw] xl:w-[20vw] xl:h-[28vh] 2xl:w-[20vw] 2xl:h-[32vh]' : 'shadow-lg w-11/12 md:w-8/12 lg:h-8/12 lg:w-[40vw] xl:w-[20vw] xl:h-8/12 2xl:w-[20vw] 2xl:h-8/12'}`}>
             <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-White_Jiquiri">
                     Média Semanal
