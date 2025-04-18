@@ -1,6 +1,6 @@
 "use client"
 
-import * as React from "react"
+import { useEffect, useState } from "react"
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
 
 import {
@@ -16,7 +16,6 @@ import {
     ChartLegend,
     ChartLegendContent,
     ChartTooltip,
-    ChartTooltipContent,
 } from "@/components/ui/chart"
 import {
     Select,
@@ -26,10 +25,11 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 
-import { weatherData } from "@/constants/weatherData";
 import { colors } from "@/styles/colors"
-import { ThermometerSun } from "lucide-react"
-
+import { ArrowDownLeftFromCircle, ThermometerSun } from "lucide-react"
+import { FilterType, useFilteredRecords } from "@/services/API/adaptersApiData"
+import { hourLabelMap } from "@/constants/hourLabelMap"
+import { DatePicker } from "../ui/datePicker"
 
 const chartConfig = {
     date: {
@@ -39,27 +39,46 @@ const chartConfig = {
         label: "Temperatura",
         color: colors.Orange_Jiquiri,
     },
-    humidity: {
-        label: "Umidade",
-        color: "var(--chart-2)",
+    airHumidity: {
+        label: "Umidade/Ar",
+        color: colors.Light_Green_Jiquiri,
+    },
+    soilHumidity: {
+        label: "Umidade/Solo",
+        color: colors.Dark_Green_Jiquiri,
     },
 } satisfies ChartConfig
 
-export function AreaChartComponent() {
-    const [timeRange, setTimeRange] = React.useState("90d")
+function hasColor(config: { label: string } | { label: string; color: string }): config is { label: string; color: string } {
+    return "color" in config
+}
 
-    const filteredData = weatherData.filter((item) => {
-        const date = new Date(item.date)
-        const referenceDate = new Date("2024-06-30")
-        let daysToSubtract = 90
-        if (timeRange === "30d") {
-            daysToSubtract = 30
-        } else if (timeRange === "7d") {
-            daysToSubtract = 7
+
+
+export function AreaChartComponent() {
+    const [timeRange, setTimeRange] = useState<FilterType>("yesterday")
+    const { data, isLoading, message, error, isError } = useFilteredRecords(timeRange)
+
+    useEffect(() => {
+        console.log("Dados filtrados:", data)
+    }, [data])
+
+    const chartData = data.temperature.map((tempEntry) => {
+        const humidityEntry = data.air_humidity.find(
+            (h) => h.hour === tempEntry.hour && h.date === tempEntry.date
+        )
+
+        const soilHumidityEntry = data.soil_humidity.find(
+            (s) => s.hour === tempEntry.hour && s.date === tempEntry.date
+        )
+
+        return {
+            hour: tempEntry.hour ?? null,
+            temperature: tempEntry.value ?? null,
+            airHumidity: humidityEntry?.value ?? null,
+            soilHumidity: soilHumidityEntry?.value ?? null,
+            date: tempEntry.date ?? null,
         }
-        const startDate = new Date(referenceDate)
-        startDate.setDate(startDate.getDate() - daysToSubtract)
-        return date >= startDate
     })
 
     return (
@@ -74,100 +93,148 @@ export function AreaChartComponent() {
                         Temperatura e umidade registradas nos últimos meses.
                     </CardDescription>
                 </div>
-                <Select value={timeRange} onValueChange={setTimeRange}>
+                <Select value={timeRange.toString()} onValueChange={(value) => setTimeRange(value as FilterType)}>
                     <SelectTrigger
                         className="w-[160px] rounded-xl sm:ml-auto text-White_Jiquiri"
                         aria-label="Select a value"
                     >
-                        <SelectValue placeholder="Últimos 3 meses" />
+                        <SelectValue placeholder="Ontem" />
                     </SelectTrigger>
                     <SelectContent className="rounded-xl">
-                        <SelectItem value="90d" className="rounded-lg">
-                            Últimos 3 meses
+                        <SelectItem value="yesterday" className="rounded-lg">
+                            Ontem
                         </SelectItem>
-                        <SelectItem value="30d" className="rounded-lg">
-                            Últimos 30 Dias
+                        <SelectItem value="today" className="rounded-lg">
+                            Hoje
                         </SelectItem>
-                        <SelectItem value="7d" className="rounded-lg">
-                            Últimos 7 Dias
+                        <SelectItem value="specific" className="rounded-lg">
+                            Específico
                         </SelectItem>
                     </SelectContent>
                 </Select>
             </CardHeader>
             <CardContent className="px-2 pt-4 sm:px-6 sm:pt-6">
-                <ChartContainer
-                    config={chartConfig}
-                    className="aspect-auto h-[250px] w-full"
-                >
-                    <AreaChart data={filteredData}>
+                {isLoading && (
+                    <div className="flex flex-col h-full w-full items-center justify-center">
+                        <p className="text-White_Jiquiri">Carregando...</p>
+                    </div>
+                )}
+                {message && (
+                    <div className="flex flex-col gap-8 h-full w-full items-center justify-center">
+                        <p className="text-White_Jiquiri text-center">{message}</p>
+                        <a
+                            className="flex justify-center items-center gap-2 text-Light_Green_Jiquiri font-light hover:underline"
+                            href="http://"
+                        >
+                            Saiba Mais
+                            <ArrowDownLeftFromCircle color={colors.Light_Green_Jiquiri} className="size-4" />
+                        </a>
+                    </div>
+                )}
+                {isError && (
+                    <div className="flex h-full w-full items-center justify-center">
+                        <p className="text-White_Jiquiri text-center">
+                            Erro ao carregar os dados: <br /> {error?.message}
+                        </p>
+                    </div>
+                )}
+                {timeRange !== "today" && timeRange !== "yesterday" && (
+                    <div className="flex flex-col h-full w-full items-center justify-center gap-2">
+                        <p className="text-White_Jiquiri text-center font-light">
+                            Selecione uma data específica para visualizar os dados.
+                        </p>
+                        <DatePicker />
+                    </div>
+                )}
+                <ChartContainer config={chartConfig} className="aspect-auto h-[250px] w-full">
+                    <AreaChart data={chartData}>
                         <defs>
                             <linearGradient id="fillTemperature" x1="0" y1="0" x2="0" y2="1">
-                                <stop
-                                    offset="5%"
-                                    stopColor="var(--color-temperature)"
-                                    stopOpacity={0.8}
-                                />
-                                <stop
-                                    offset="95%"
-                                    stopColor="var(--color-temperature)"
-                                    stopOpacity={0.1}
-                                />
+                                <stop offset="5%" stopColor={chartConfig.temperature.color} stopOpacity={0.8} />
+                                <stop offset="95%" stopColor={chartConfig.temperature.color} stopOpacity={0.1} />
                             </linearGradient>
-                            <linearGradient id="fillHumidity" x1="0" y1="0" x2="0" y2="1">
-                                <stop
-                                    offset="5%"
-                                    stopColor="var(--color-humidity)"
-                                    stopOpacity={0.8}
-                                />
-                                <stop
-                                    offset="95%"
-                                    stopColor="var(--color-humidity)"
-                                    stopOpacity={0.1}
-                                />
+                            <linearGradient id="fillAirHumidity" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="5%" stopColor={chartConfig.airHumidity.color} stopOpacity={0.8} />
+                                <stop offset="95%" stopColor={chartConfig.airHumidity.color} stopOpacity={0.1} />
+                            </linearGradient>
+                            <linearGradient id="fillSoilHumidity" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="5%" stopColor={chartConfig.soilHumidity.color} stopOpacity={0.8} />
+                                <stop offset="95%" stopColor={chartConfig.soilHumidity.color} stopOpacity={0.1} />
                             </linearGradient>
                         </defs>
                         <CartesianGrid vertical={false} />
                         <XAxis
-                            dataKey="date"
+                            dataKey="hour"
                             tickLine={false}
                             axisLine={false}
                             tickMargin={8}
                             minTickGap={32}
-                            tickFormatter={(value) => {
-                                const date = new Date(value)
-                                return date.toLocaleDateString("pt-BR", {
-                                    month: "short",
-                                    day: "numeric",
-                                })
-                            }}
+                            tickFormatter={(value: keyof typeof hourLabelMap) =>
+                                hourLabelMap[value] || value
+                            }
                         />
 
                         <ChartTooltip
-                            cursor={false}
-                            content={
-                                <ChartTooltipContent
-                                    labelFormatter={(value) => {
-                                        return new Date(value).toLocaleDateString("pt-BR", {
-                                            month: "short",
-                                            day: "numeric",
-                                        })
-                                    }}
-                                    indicator="dot"
-                                />
-                            }
+                            cursor
+                            content={({ label, payload }) => (
+                                <div className="rounded-lg bg-Black_Jiquiri/90 p-4 text-sm text-white shadow-md space-y-2">
+                                    <p className="text-base font-semibold">
+                                        {hourLabelMap[label as keyof typeof hourLabelMap] || label}
+                                    </p>
+                                    {payload?.map((entry, index) => {
+                                        const config = chartConfig[entry.dataKey as keyof typeof chartConfig]
+
+                                        const value = Number(entry.value).toFixed(2)
+                                        let unit = ""
+
+                                        if (entry.dataKey === "temperature") unit = "º"
+                                        else if (
+                                            entry.dataKey === "airHumidity" ||
+                                            entry.dataKey === "soilHumidity"
+                                        )
+                                            unit = "%"
+
+                                        return (
+                                            <div key={index} className="flex justify-between gap-8">
+                                                <span className="flex items-center gap-2">
+                                                    {hasColor(config) && (
+                                                        <span
+                                                            className="inline-block size-3 rounded-sm"
+                                                            style={{ backgroundColor: config.color }}
+                                                        />
+                                                    )}
+                                                    {config.label}
+                                                </span>
+                                                <span className="tabular-nums">
+                                                    {value}
+                                                    {unit}
+                                                </span>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+                            )}
                         />
+
                         <Area
                             dataKey="temperature"
                             type="natural"
                             fill="url(#fillTemperature)"
-                            stroke="var(--color-temperature)"
+                            stroke={chartConfig.temperature.color}
                             stackId="a"
                         />
                         <Area
-                            dataKey="humidity"
+                            dataKey="airHumidity"
                             type="natural"
-                            fill="url(#fillHumidity)"
-                            stroke="var(--color-humidity)"
+                            fill="url(#fillAirHumidity)"
+                            stroke={chartConfig.airHumidity.color}
+                            stackId="a"
+                        />
+                        <Area
+                            dataKey="soilHumidity"
+                            type="natural"
+                            fill="url(#fillSoilHumidity)"
+                            stroke={chartConfig.soilHumidity.color}
                             stackId="a"
                         />
                         <ChartLegend className="text-White_Jiquiri" content={<ChartLegendContent />} />
