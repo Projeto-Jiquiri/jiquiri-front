@@ -1,4 +1,4 @@
-import { useAllRecords } from './fetchers/getAllRecords'
+import { useAllRecords } from '../fetchers/getAllRecords'
 import { useEffect, useState } from 'react'
 import { isToday, isYesterday, format, parse, isBefore } from 'date-fns'
 import { weatherData } from '@/constants/weatherData'
@@ -17,7 +17,7 @@ type FlattenedSensors = {
     soil_humidity: FlattenedData[]
 }
 
-export function useFilteredRecords(filter: FilterType) {
+export function useFilteredGetAllRecords(filter: FilterType) {
     const {
         // data: allData,
         isLoading,

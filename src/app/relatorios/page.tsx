@@ -39,7 +39,7 @@ export default function Relatorios() {
                             </div>
 
                             <div className="flex max-xl:w-screen flex-col lg:flex-row max-xl:justify-center max-xl:items-center gap-4 md:gap-6 lg:gap-8 xl:gap-4 2xl:gap-6 ">
-                                <RadarChartComponent />
+                                <MiniBarComponent />
                                 <div>
                                     <Image
                                         alt="Divisor Vertical"
@@ -47,7 +47,7 @@ export default function Relatorios() {
                                         className="visible max-xl:hidden xl:w-2 xl:h-[24vw] 2xl:w-3 2xl:h-[15vw] opacity-80"
                                     />
                                 </div>
-                                <MiniBarComponent />
+                                <RadarChartComponent />
                             </div>
                             <div>
                                 <Image

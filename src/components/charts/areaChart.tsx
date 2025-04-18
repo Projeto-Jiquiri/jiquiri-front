@@ -27,7 +27,7 @@ import {
 
 import { colors } from "@/styles/colors"
 import { ArrowDownLeftFromCircle, ThermometerSun } from "lucide-react"
-import { FilterType, useFilteredRecords } from "@/services/API/adaptersApiData"
+import { FilterType, useFilteredGetAllRecords } from "@/services/API/adapters/adapterGetAllRecords"
 import { hourLabelMap } from "@/constants/hourLabelMap"
 import { DatePicker } from "../ui/datePicker"
 
@@ -56,7 +56,7 @@ function hasColor(config: { label: string } | { label: string; color: string }):
 export function AreaChartComponent() {
     const [timeRange, setTimeRange] = useState<FilterType>("yesterday")
     const [selectedDate, setSelectedDate] = useState<Date | null>(null)
-    const { data, isLoading, message, error, isError } = useFilteredRecords(
+    const { data, isLoading, message, error, isError } = useFilteredGetAllRecords(
         selectedDate || timeRange
     )
 
@@ -99,11 +99,11 @@ export function AreaChartComponent() {
 
     return (
         <Card className="w-11/12 md:11/12 lg:w-10/12 xl:w-6/12 2xl:w-7/12 shadow-lg">
-            <CardHeader className="flex items-center gap-2 space-y-0 border-b py-5 sm:flex-row">
-                <div className="grid flex-1 gap-1 text-White_Jiquiri text-center sm:text-left">
+            <CardHeader className="flex items-end gap-2 space-y-0 border-b py-5 sm:flex-row">
+                <div className="grid flex-1 gap-1 text-White_Jiquiri">
                     <CardTitle className="flex items-center gap-2">
                         Temperatura e Umidade
-                        <ThermometerSun color={colors.White_Jiquiri} className="size-5" />
+                        <ThermometerSun className="text-Orange_Jiquiri size-5" />
                     </CardTitle>
                     <CardDescription>
                         Temperatura e umidade registradas nos últimos meses.
@@ -142,7 +142,7 @@ export function AreaChartComponent() {
                     <div className="flex flex-col gap-8 h-full w-full items-center justify-center">
                         <p className="text-White_Jiquiri text-center">{message}</p>
                         <a
-                            className="flex justify-center items-center gap-2 text-Light_Green_Jiquiri font-light hover:underline"
+                            className="flex justify-center items-center gap-2 mb-8 text-Light_Green_Jiquiri font-light hover:underline"
                             href="http://"
                         >
                             Saiba Mais
