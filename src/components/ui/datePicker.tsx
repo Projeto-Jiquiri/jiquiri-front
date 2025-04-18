@@ -54,6 +54,7 @@ export function DatePicker({ onDateChange }: DatePickerProps) {
                     selected={date}
                     locale={ptBR}
                     onSelect={handleSelect}
+                    disabled={{ after: new Date() }}
                     classNames={{
                         today: `border-White_Jiquiri text-white bg-slate-500/40 rounded-full`,
                         selected: `bg-White_Jiquiri font-bold text-Black_Jiquiri border-slate-500 rounded-full`,
