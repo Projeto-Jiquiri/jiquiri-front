@@ -84,6 +84,13 @@ export function useMonthlyAverages() {
             }
         })
 
+        // Ordenar o resultado pelos meses de forma crescente (mês mais recente primeiro)
+        result.sort((a, b) => {
+            const dateA = parse(a.month, 'MM/yyyy', new Date())
+            const dateB = parse(b.month, 'MM/yyyy', new Date())
+            return dateB.getTime() - dateA.getTime() // Ordenação decrescente (mais recente primeiro)
+        })
+
         setAverages(result)
     }, [allData])
 
