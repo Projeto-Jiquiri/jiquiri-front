@@ -24,7 +24,7 @@ export default function Relatorios() {
                 <div className="flex flex-col justify-center  items-center gap-10 md:gap-12 lg:gap-14 xl:gap-16 2xl:gap-24">
                     <div className="flex flex-col justify-center items-center gap-2 md-gap-4 lg:gap-2 xl:gap-2 2xl:gap-4">
                         <h1 className="font-catilde text-Black_Jiquiri text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl">Relatórios</h1>
-                        <p className="font-poppins font-light text-center text-Gray_Jiquiri text-lg w-72 md:text-xl md:w-80 lg:text-lg lg:w-80 xl:text-lg xl:w-80 2xl:text-xl 2xl:w-80 ">Lorem ipsum dolor sit amet consectetur.</p>
+                        <p className="font-poppins font-light text-center text-Gray_Jiquiri text-lg w-72 md:text-xl md:w-80 lg:text-lg lg:w-80 xl:text-lg xl:w-80 2xl:text-xl 2xl:w-80 ">Acompanhe os dados históricos do projeto Jiquiri.</p>
                     </div>
 
                     <div className="flex flex-col justify-center items-center w-screen xl:px-32 xl:gap-14 2xl:px-40 2xl:gap-16">
