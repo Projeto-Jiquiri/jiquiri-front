@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
+import { format, parse } from 'date-fns' // Importar a função format
 
 import {
     Card,
@@ -17,39 +18,102 @@ import {
     ChartTooltipContent,
 } from "@/components/ui/chart"
 
-import { weatherData } from "@/constants/weatherData"
 import { Droplet } from "lucide-react"
 import { colors } from "@/styles/colors"
-
+import { useDaysAveragesForOneMonth } from "@/services/API/adapters/useDailyAveragesForDays"
 
 const chartConfig = {
-    views: {
-        label: "Valor: ",
-    },
-    temperature: {
+    temperature_avg: {
         label: "Temperatura",
         color: colors.Orange_Jiquiri,
     },
-    humidity: {
-        label: "Umidade",
-        color: "var(--chart-2)",
+    airHumidity_avg: {
+        label: "Umidade/Ar",
+        color: colors.Light_Green_Jiquiri,
+    },
+    soilHumidity_avg: {
+        label: "Umidade/Solo",
+        color: colors.Dark_Green_Jiquiri,
     },
 } satisfies ChartConfig
 
 export function BarChartComponent() {
-    const [activeChart, setActiveChart] =
-        React.useState<keyof typeof chartConfig>("temperature")
+    const { averages, isLoading, message, isError, error } = useDaysAveragesForOneMonth("previous")
+    const [activeChart, setActiveChart] = React.useState<keyof typeof chartConfig>("temperature_avg")
+    const [interval, setInterval] = React.useState<number>(0)  // Estado para o intervalo
 
-    const total = React.useMemo(
-        () => ({
-            temperature: weatherData.reduce((acc, curr) => acc + curr.temperature, 0),
-            humidity: weatherData.reduce((acc, curr) => acc + curr.humidity, 0),
-        }),
-        []
-    )
+    React.useEffect(() => {
+        const handleResize = () => {
+            const windowWidth = window.innerWidth
+            if (windowWidth <= 768) {
+                setInterval(4)
+            } else {
+                setInterval(0)
+            }
+        }
+
+        handleResize() // Chama a função no início
+        window.addEventListener("resize", handleResize)  // Ouve mudanças no tamanho da janela
+
+        return () => window.removeEventListener("resize", handleResize)  // Limpeza do evento
+    }, [])
+
+    const total = {
+        temperature_avg: averages.reduce((acc, curr) => acc + (curr.temperature_avg ?? 0), 0),
+        airHumidity_avg: averages.reduce((acc, curr) => acc + (curr.air_humidity_avg ?? 0), 0),
+        soilHumidity_avg: averages.reduce((acc, curr) => acc + (curr.soil_humidity_avg ?? 0), 0),
+    }
+
+    if (isLoading) {
+        return (
+            <Card className="shadow-lg w-11/12">
+                <CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
+                    <div className="flex flex-1 flex-col text-White_Jiquiri justify-center gap-1 px-6 py-5 sm:py-6">
+                        <CardTitle className="flex items-center gap-2">
+                            Barras - Dados/Dia
+                            <Droplet color={colors.White_Jiquiri} className="size-5" />
+                        </CardTitle>
+                        <CardDescription>Carregando...</CardDescription>
+                    </div>
+                </CardHeader>
+            </Card>
+        )
+    }
+
+    if (isError) {
+        return (
+            <Card className="shadow-lg w-11/12">
+                <CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
+                    <div className="flex flex-1 flex-col text-White_Jiquiri justify-center gap-1 px-6 py-5 sm:py-6">
+                        <CardTitle className="flex items-center gap-2">
+                            Barras - Dados/Dia
+                            <Droplet color={colors.White_Jiquiri} className="size-5" />
+                        </CardTitle>
+                        <CardDescription>{message || error?.message}</CardDescription>
+                    </div>
+                </CardHeader>
+            </Card>
+        )
+    }
+
+    if (message) {
+        return (
+            <Card className="shadow-lg w-11/12">
+                <CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
+                    <div className="flex flex-1 flex-col text-White_Jiquiri justify-center gap-1 px-6 py-5 sm:py-6">
+                        <CardTitle className="flex items-center gap-2">
+                            Barras - Dados/Dia
+                            <Droplet color={colors.White_Jiquiri} className="size-5" />
+                        </CardTitle>
+                        <CardDescription>{message}</CardDescription>
+                    </div>
+                </CardHeader>
+            </Card>
+        )
+    }
 
     return (
-        <Card className="shadow-lg w-11/12 md:w-11/12 lg:w-10/12 xl:w-10/12 2xl:w-10/12">
+        <Card className="shadow-lg w-11/12">
             <CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
                 <div className="flex flex-1 flex-col text-White_Jiquiri justify-center gap-1 px-6 py-5 sm:py-6">
                     <CardTitle className="flex items-center gap-2">
@@ -57,11 +121,12 @@ export function BarChartComponent() {
                         <Droplet color={colors.White_Jiquiri} className="size-5" />
                     </CardTitle>
                     <CardDescription>
-                        Gráfico de barras com dados de temperatura e umidade por dia.
+                        Gráfico de barras com dados de temperatura, umidade do ar e do solo por dia.
                     </CardDescription>
                 </div>
                 <div className="flex">
-                    {["temperature", "humidity"].map((key) => {
+                    {/* Botões para alternar entre os tipos de dados */}
+                    {Object.keys(chartConfig).map((key) => {
                         const chart = key as keyof typeof chartConfig
                         return (
                             <button
@@ -74,7 +139,7 @@ export function BarChartComponent() {
                                     {chartConfig[chart].label}
                                 </span>
                                 <span className="text-lg font-bold leading-none sm:text-3xl">
-                                    {total[key as keyof typeof total].toLocaleString()}
+                                    {total[chart].toFixed(1)}
                                 </span>
                             </button>
                         )
@@ -87,8 +152,7 @@ export function BarChartComponent() {
                     className="aspect-auto h-[250px] w-full"
                 >
                     <BarChart
-                        accessibilityLayer
-                        data={weatherData}
+                        data={averages}
                         margin={{
                             left: 12,
                             right: 12,
@@ -101,30 +165,42 @@ export function BarChartComponent() {
                             axisLine={false}
                             tickMargin={8}
                             minTickGap={32}
-                            tickFormatter={(value) => {
-                                const date = new Date(value)
-                                return date.toLocaleDateString("pt-BR", {
-                                    month: "short",
-                                    day: "numeric",
-                                })
+                            interval={interval}
+                            tickFormatter={(date) => {
+                                const parsedDate = parse(date, 'dd/MM/yyyy', new Date())
+                                return format(parsedDate, 'dd/MM')
                             }}
                         />
                         <ChartTooltip
                             content={
                                 <ChartTooltipContent
                                     className="w-[150px]"
-                                    nameKey="views"
-                                    labelFormatter={(value) => {
-                                        return new Date(value).toLocaleDateString("pt-BR", {
-                                            month: "short",
-                                            day: "numeric",
-                                            year: "numeric",
-                                        })
-                                    }}
+                                    nameKey={activeChart}
+                                    labelFormatter={(value) => value}
                                 />
                             }
                         />
-                        <Bar dataKey={activeChart} fill={`var(--color-${activeChart})`} />
+                        {activeChart === "temperature_avg" && (
+                            <Bar
+                                dataKey="temperature_avg"
+                                fill={chartConfig.temperature_avg.color}
+                                name={chartConfig.temperature_avg.label}
+                            />
+                        )}
+                        {activeChart === "airHumidity_avg" && (
+                            <Bar
+                                dataKey="air_humidity_avg"
+                                fill={chartConfig.airHumidity_avg.color}
+                                name={chartConfig.airHumidity_avg.label}
+                            />
+                        )}
+                        {activeChart === "soilHumidity_avg" && (
+                            <Bar
+                                dataKey="soil_humidity_avg"
+                                fill={chartConfig.soilHumidity_avg.color}
+                                name={chartConfig.soilHumidity_avg.label}
+                            />
+                        )}
                     </BarChart>
                 </ChartContainer>
             </CardContent>
