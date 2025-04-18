@@ -30,6 +30,7 @@ import { ArrowDownLeftFromCircle, ThermometerSun } from "lucide-react"
 import { FilterType, useFilteredGetAllRecords } from "@/services/API/adapters/adapterGetAllRecords"
 import { hourLabelMap } from "@/constants/hourLabelMap"
 import { DatePicker } from "../ui/datePicker"
+import { Skeleton } from "../ui/skeleton"
 
 const chartConfig = {
     date: {
@@ -135,7 +136,7 @@ export function AreaChartComponent() {
             <CardContent className="px-2 pt-4 sm:px-6 sm:pt-6">
                 {isLoading && (
                     <div className="flex flex-col h-full w-full items-center justify-center">
-                        <p className="text-White_Jiquiri">Carregando...</p>
+                        <Skeleton className="h-40 w-full mb-4" />
                     </div>
                 )}
                 {message && (

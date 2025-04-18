@@ -20,6 +20,7 @@ import {
     ChartLegendContent,
     ChartTooltip,
 } from "@/components/ui/chart"
+import { Skeleton } from "@/components/ui/skeleton" // Importando o Skeleton
 import { colors } from "@/styles/colors"
 import { useMonthlyAverages } from "@/services/API/adapters/useMonthlyAverages"
 import { parse, format } from "date-fns"
@@ -52,8 +53,8 @@ export function RadarChartComponent() {
                     <CardDescription>Temperatura e umidade dos meses anteriores</CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <div className="flex justify-center items-center h-40">
-                        <p>Carregando...</p>
+                    <div className="flex justify-center items-center h-60">
+                        <Skeleton className="w-full h-full rounded-lg" />
                     </div>
                 </CardContent>
             </Card>

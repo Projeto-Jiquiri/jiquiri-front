@@ -17,6 +17,7 @@ import {
     ChartContainer,
     ChartTooltip,
 } from "@/components/ui/chart"
+import { Skeleton } from "@/components/ui/skeleton"
 
 import { colors } from "@/styles/colors"
 import { useWeeklyAverages } from "@/services/API/adapters/useWeekAverages"
@@ -49,9 +50,8 @@ interface WeatherData {
 }
 
 export function MiniBarComponent() {
-    const { data, isLoading, isError, error } = useWeeklyAverages()
+    const { data, isLoading, isError, error } = useWeeklyAverages({}) // Passando data específica como undefined para pegar a média semanal
     const { dpr, setDpr } = useDprStore();
-
 
     useEffect(() => {
         const updateDpr = () => {
@@ -74,7 +74,7 @@ export function MiniBarComponent() {
                 </CardHeader>
                 <CardContent>
                     <div className="flex justify-center items-center h-full w-full">
-                        <p>Carregando...</p>
+                        <Skeleton className="w-full h-40 rounded-md" />
                     </div>
                 </CardContent>
             </Card>
@@ -208,8 +208,6 @@ export function MiniBarComponent() {
                                 )
                             }}
                         />
-
-                        {/* <ChartLegend className="text-White_Jiquiri" content={<ChartLegendContent />} /> */}
                     </BarChart>
                 </ChartContainer>
             </CardContent>

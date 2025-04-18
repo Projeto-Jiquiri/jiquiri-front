@@ -21,6 +21,7 @@ import {
 import { Droplet } from "lucide-react"
 import { colors } from "@/styles/colors"
 import { useDaysAveragesForOneMonth } from "@/services/API/adapters/useDailyAveragesForDays"
+import { Skeleton } from "@/components/ui/skeleton"
 
 const chartConfig = {
     temperature_avg: {
@@ -52,21 +53,37 @@ export function BarChartComponent() {
             }
         }
 
-        handleResize() // Chama a função no início
-        window.addEventListener("resize", handleResize)  // Ouve mudanças no tamanho da janela
+        handleResize()
+        window.addEventListener("resize", handleResize)
 
         return () => window.removeEventListener("resize", handleResize)  // Limpeza do evento
     }, [])
 
+    // Total dos valores válidos
     const total = {
         temperature_avg: averages.reduce((acc, curr) => acc + (curr.temperature_avg ?? 0), 0),
         airHumidity_avg: averages.reduce((acc, curr) => acc + (curr.air_humidity_avg ?? 0), 0),
         soilHumidity_avg: averages.reduce((acc, curr) => acc + (curr.soil_humidity_avg ?? 0), 0),
     }
 
+    // Filtra os dias válidos (onde todos os valores são diferentes de null ou undefined)
+    const validDays = averages.filter(
+        (item) =>
+            item.temperature_avg != null &&
+            item.air_humidity_avg != null &&
+            item.soil_humidity_avg != null
+    ).length;
+
+    // Calcula a média, evitando dividir por 0
+    const averagesWithTotal = {
+        temperature_avg: validDays ? total.temperature_avg / validDays : 0,
+        airHumidity_avg: validDays ? total.airHumidity_avg / validDays : 0,
+        soilHumidity_avg: validDays ? total.soilHumidity_avg / validDays : 0,
+    }
+
     if (isLoading) {
         return (
-            <Card className="shadow-lg w-11/12">
+            <Card className="shadow-lg w-11/12 lg:w-10/12 xl:w-10/12 2xl:w-10/12">
                 <CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
                     <div className="flex flex-1 flex-col text-White_Jiquiri justify-center gap-1 px-6 py-5 sm:py-6">
                         <CardTitle className="flex items-center gap-2">
@@ -76,13 +93,17 @@ export function BarChartComponent() {
                         <CardDescription>Carregando...</CardDescription>
                     </div>
                 </CardHeader>
+                <CardContent className="flex justify-center items-center gap-8 px-2 sm:p-6">
+                    <Skeleton className="h-[200px] w-full sm:h-[250px] md:h-[300px] mb-4" />
+                </CardContent>
+
             </Card>
         )
     }
 
     if (isError) {
         return (
-            <Card className="shadow-lg w-11/12">
+            <Card className="shadow-lg w-11/12 lg:w-10/12 xl:w-10/12 2xl:w-10/12">
                 <CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
                     <div className="flex flex-1 flex-col text-White_Jiquiri justify-center gap-1 px-6 py-5 sm:py-6">
                         <CardTitle className="flex items-center gap-2">
@@ -98,7 +119,7 @@ export function BarChartComponent() {
 
     if (message) {
         return (
-            <Card className="shadow-lg w-11/12">
+            <Card className="shadow-lg w-11/12 lg:w-10/12 xl:w-10/12 2xl:w-10/12">
                 <CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
                     <div className="flex flex-1 flex-col text-White_Jiquiri justify-center gap-1 px-6 py-5 sm:py-6">
                         <CardTitle className="flex items-center gap-2">
@@ -113,7 +134,7 @@ export function BarChartComponent() {
     }
 
     return (
-        <Card className="shadow-lg w-11/12">
+        <Card className="shadow-lg w-11/12 lg:w-10/12 xl:w-10/12 2xl:w-10/12">
             <CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
                 <div className="flex flex-1 flex-col text-White_Jiquiri justify-center gap-1 px-6 py-5 sm:py-6">
                     <CardTitle className="flex items-center gap-2">
@@ -139,7 +160,7 @@ export function BarChartComponent() {
                                     {chartConfig[chart].label}
                                 </span>
                                 <span className="text-lg font-bold leading-none sm:text-3xl">
-                                    {total[chart].toFixed(1)}
+                                    {averagesWithTotal[chart].toFixed(1)}
                                 </span>
                             </button>
                         )
