@@ -13,7 +13,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export default function CalendarComponent() {
     const [selectedDate, setSelectedDate] = useState<Date | null>(null)
-    const { data, error, isError, isLoading } = useWeeklyAverages({ specificDate: selectedDate ? selectedDate.toLocaleDateString('pt-BR') : undefined })
+    const { data, isLoading } = useWeeklyAverages({ specificDate: selectedDate ? selectedDate.toLocaleDateString('pt-BR') : undefined })
 
     useEffect(() => {
         console.log("Dados:", data)
