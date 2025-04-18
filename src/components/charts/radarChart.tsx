@@ -49,8 +49,8 @@ export function RadarChartComponent() {
         return (
             <Card className="shadow-lg">
                 <CardHeader className="items-start pb-4 text-White_Jiquiri">
-                    <CardTitle>Radar - Meses Anteriores</CardTitle>
-                    <CardDescription>Temperatura e umidade dos meses anteriores</CardDescription>
+                    <CardTitle>Radar - 6 Meses Anteriores</CardTitle>
+                    <CardDescription>Temperatura e umidade dos 6 meses anteriores</CardDescription>
                 </CardHeader>
                 <CardContent>
                     <div className="flex justify-center items-center h-60">
@@ -65,8 +65,8 @@ export function RadarChartComponent() {
         return (
             <Card className="shadow-lg">
                 <CardHeader className="items-start pb-4 text-White_Jiquiri">
-                    <CardTitle>Radar - Meses Anteriores</CardTitle>
-                    <CardDescription>Temperatura e umidade dos meses anteriores</CardDescription>
+                    <CardTitle>Radar - 6 Meses Anteriores</CardTitle>
+                    <CardDescription>Temperatura e umidade dos 6 meses anteriores</CardDescription>
                 </CardHeader>
                 <CardContent>
                     <div className="flex justify-center items-center h-40">
@@ -93,8 +93,8 @@ export function RadarChartComponent() {
     return (
         <Card className="shadow-lg">
             <CardHeader className="items-start pb-4 text-White_Jiquiri">
-                <CardTitle>Radar - Meses Anteriores</CardTitle>
-                <CardDescription>Temperatura e umidade dos meses anteriores</CardDescription>
+                <CardTitle>Radar - 6 Meses Anteriores</CardTitle>
+                <CardDescription>Temperatura e umidade dos 6 meses anteriores</CardDescription>
             </CardHeader>
             <CardContent>
                 <ChartContainer
