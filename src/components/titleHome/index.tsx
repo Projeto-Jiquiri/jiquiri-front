@@ -11,7 +11,7 @@ const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 import walkingPlant from "@/assets/Animations/walkingPlant.json";
 import vasoPlanta from "@/assets/Animations/plantaVasoPendurado.json";
 
-import { useDprStore } from "@/context/generalStore";
+import { useDprStore } from "@/services/context/generalStore";
 
 
 export default function TitleHome() {
