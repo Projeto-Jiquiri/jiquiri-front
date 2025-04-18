@@ -1,7 +1,9 @@
 "use client"
 
-import { Thermometer, Droplet } from "lucide-react"
+import { ThermometerSun, Droplet, Flower } from "lucide-react"
 import { Bar, BarChart, XAxis } from "recharts"
+import { parse, format } from "date-fns"
+import { ptBR } from "date-fns/locale"
 
 import {
     Card,
@@ -14,62 +16,197 @@ import {
     ChartConfig,
     ChartContainer,
     ChartTooltip,
-    ChartTooltipContent,
 } from "@/components/ui/chart"
+import { Skeleton } from "@/components/ui/skeleton"
 
-import { weatherDataWeek } from "@/constants/weatherData";
 import { colors } from "@/styles/colors"
+import { useWeeklyAverages } from "@/services/API/adapters/useWeekAverages"
+import { useDprStore } from "@/services/context/generalStore"
+import { useEffect } from "react"
 
 const chartConfig = {
     temperature: {
-        label: "Temperatura",
-        color: colors.Purple_Jiquiri,
-        icon: Thermometer,
+        label: "Média da Temperatura",
+        color: colors.Orange_Jiquiri,
+        icon: ThermometerSun,
     },
-    humidity: {
-        label: "Umidade",
-        color: "var(--chart-2)",
+    airHumidity: {
+        label: "Média da Umidade/Ar",
+        color: colors.Light_Green_Jiquiri,
         icon: Droplet,
+    },
+    soilHumidity: {
+        label: "Média da Umidade/Solo",
+        color: colors.Dark_Green_Jiquiri,
+        icon: Flower,
     },
 } satisfies ChartConfig
 
+interface WeatherData {
+    date: string
+    temperature: number | null
+    airHumidity: number | null
+    soilHumidity: number | null
+}
+
 export function MiniBarComponent() {
+    const { data, isLoading, isError, error } = useWeeklyAverages({}) // Passando data específica como undefined para pegar a média semanal
+    const { dpr, setDpr } = useDprStore();
+
+    useEffect(() => {
+        const updateDpr = () => {
+            setDpr(window.devicePixelRatio);
+        };
+
+        window.addEventListener("resize", updateDpr);
+        return () => window.removeEventListener("resize", updateDpr);
+    }, [dpr, setDpr]);
+
+    if (isLoading) {
+        return (
+            <Card className="shadow-lg w-11/12 md:w-8/12 lg:h-[37.5vh] lg:w-[40vw] xl:w-[20vw] xl:h-[28vh] 2xl:w-[20vw] 2xl:h-[32vh]">
+                <CardHeader>
+                    <CardTitle className="flex items-center gap-2 text-White_Jiquiri">
+                        Média Semanal
+                        <ThermometerSun size={18} className="text-Orange_Jiquiri" />
+                    </CardTitle>
+                    <CardDescription>Média Semanal de Temperatura e Umidade do Ar e Solo</CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <div className="flex justify-center items-center h-full w-full">
+                        <Skeleton className="w-full h-40 rounded-md" />
+                    </div>
+                </CardContent>
+            </Card>
+        )
+    }
+
+    if (isError) {
+        return (
+            <Card className="shadow-lg w-11/12 md:w-8/12 lg:h-[37.5vh] lg:w-[40vw] xl:w-[20vw] xl:h-[28vh] 2xl:w-[20vw] 2xl:h-[32vh]">
+                <CardHeader>
+                    <CardTitle className="flex items-center gap-2 text-White_Jiquiri">
+                        Média Semanal
+                        <ThermometerSun size={18} className="text-Orange_Jiquiri" />
+                    </CardTitle>
+                    <CardDescription>Média Semanal de Temperatura e Umidade do Ar e Solo</CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <div className="flex justify-center items-center h-full w-full">
+                        <p>Erro ao carregar os dados: {error?.message}</p>
+                    </div>
+                </CardContent>
+            </Card>
+        )
+    }
+
+    const weatherDataWeek: WeatherData[] = data.map((entry) => ({
+        date: entry.date,
+        temperature: entry.avgTemperature,
+        airHumidity: entry.avgAirHumidity,
+        soilHumidity: entry.avgSoilHumidity,
+    }))
+
     return (
-        <Card className="shadow-lg w-11/12 md:w-8/12 lg:h-[37.5vh] lg:w-[40vw] xl:w-[20vw] xl:h-[28vh] 2xl:w-[18vw] 2xl:h-[30vh]">
+        <Card className={`${dpr > 1 && dpr <= 1.5 ? 'shadow-lg w-11/12 md:w-8/12 lg:h-[37.5vh] lg:w-[40vw] xl:w-[20vw] xl:h-[28vh] 2xl:w-[20vw] 2xl:h-[32vh]' : 'shadow-lg w-11/12 md:w-8/12 lg:h-8/12 lg:w-[40vw] xl:w-[20vw] xl:h-8/12 2xl:w-[20vw] 2xl:h-8/12'}`}>
             <CardHeader>
-                <CardTitle>Semanal</CardTitle>
-                <CardDescription>Gráfico Semanal</CardDescription>
+                <CardTitle className="flex items-center gap-2 text-White_Jiquiri">
+                    Média Semanal
+                    <ThermometerSun size={18} className="text-Orange_Jiquiri" />
+                </CardTitle>
+                <CardDescription>Média Semanal de Temperatura e Umidade do Ar e Solo</CardDescription>
             </CardHeader>
             <CardContent>
-                <ChartContainer config={chartConfig}>
-                    <BarChart accessibilityLayer data={weatherDataWeek}>
+                <ChartContainer config={chartConfig} className="h-100%">
+                    <BarChart data={weatherDataWeek}>
                         <XAxis
                             dataKey="date"
                             tickLine={false}
                             tickMargin={10}
                             axisLine={false}
                             tickFormatter={(value) => {
-                                return new Date(value).toLocaleDateString("pt-BR", {
-                                    weekday: "short",
-                                })
+                                try {
+                                    const parsedDate = parse(value, "dd/MM/yyyy", new Date())
+                                    return format(parsedDate, "EEE", { locale: ptBR }).slice(0, 3)
+                                } catch {
+                                    return value
+                                }
                             }}
                         />
                         <Bar
                             dataKey="temperature"
                             stackId="a"
-                            fill={colors.Orange_Jiquiri}
-                            radius={[0, 0, 4, 4]}
+                            fill={chartConfig.temperature.color}
                         />
                         <Bar
-                            dataKey="humidity"
+                            dataKey="airHumidity"
                             stackId="a"
-                            fill="var(--chart-2)"
+                            fill={chartConfig.airHumidity.color}
+                        />
+                        <Bar
+                            dataKey="soilHumidity"
+                            stackId="a"
+                            fill={chartConfig.soilHumidity.color}
                             radius={[4, 4, 0, 0]}
                         />
+
+                        {/* Barra cinza para dias sem dados */}
+                        <Bar
+                            dataKey={(entry: WeatherData) => {
+                                const hasData =
+                                    entry.temperature !== null &&
+                                    entry.airHumidity !== null &&
+                                    entry.soilHumidity !== null
+                                return hasData ? 0 : 100
+                            }}
+                            stackId="a"
+                            fill={colors.Gray_Jiquiri}
+                            radius={[4, 4, 0, 0]}
+                        />
+
                         <ChartTooltip
-                            content={<ChartTooltipContent hideLabel />}
                             cursor={false}
-                            defaultIndex={1}
+                            content={({ payload, label }) => {
+                                let labelFormatted = label
+                                try {
+                                    const parsedLabel = parse(label, "dd/MM/yyyy", new Date())
+                                    labelFormatted = format(parsedLabel, "EEEE dd/MM", {
+                                        locale: ptBR,
+                                    })
+                                } catch {
+                                    // mantém o valor original
+                                }
+
+                                return (
+                                    <div className="rounded-lg bg-Black_Jiquiri/90 p-4 text-sm text-white shadow-md space-y-2">
+                                        <p className="text-base font-semibold">
+                                            {labelFormatted}
+                                        </p>
+                                        {payload?.map((entry, index) => {
+                                            const config = chartConfig[entry.dataKey as keyof typeof chartConfig]
+                                            if (config) {
+                                                const value = Number(entry.value).toFixed(1)
+                                                const unit = entry.dataKey === "temperature" ? "º" : "%"
+                                                return (
+                                                    <div key={index} className="flex justify-between gap-6">
+                                                        <span className="flex items-center gap-2">
+                                                            <span
+                                                                className="inline-block size-3 rounded-sm"
+                                                                style={{ backgroundColor: config.color }}
+                                                            />
+                                                            {config.label}
+                                                        </span>
+                                                        <span className="tabular-nums">
+                                                            {value}{unit}
+                                                        </span>
+                                                    </div>
+                                                )
+                                            }
+                                            return null
+                                        })}
+                                    </div>
+                                )
+                            }}
                         />
                     </BarChart>
                 </ChartContainer>

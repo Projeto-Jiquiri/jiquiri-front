@@ -1,3 +1,4 @@
+'use client'
 import Image from "next/image";
 
 import { AreaChartComponent } from "@/components/charts/areaChart";
@@ -14,6 +15,7 @@ import { VerticalDividerDashed } from "@/components/divider";
 
 
 export default function Relatorios() {
+
     return (
         <div className="flex flex-1 justify-center items-center overflow-hidden">
             <main className="flex flex-col justify-center items-center gap-6 md:gap-8 lg:gap-14 xl:gap-16 2xl:gap-16">
@@ -22,7 +24,7 @@ export default function Relatorios() {
                 <div className="flex flex-col justify-center  items-center gap-10 md:gap-12 lg:gap-14 xl:gap-16 2xl:gap-24">
                     <div className="flex flex-col justify-center items-center gap-2 md-gap-4 lg:gap-2 xl:gap-2 2xl:gap-4">
                         <h1 className="font-catilde text-Black_Jiquiri text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl">Relatórios</h1>
-                        <p className="font-poppins font-light text-center text-Gray_Jiquiri text-lg w-72 md:text-xl md:w-80 lg:text-lg lg:w-80 xl:text-lg xl:w-80 2xl:text-xl 2xl:w-80 ">Lorem ipsum dolor sit amet consectetur.</p>
+                        <p className="font-poppins font-light text-center text-Gray_Jiquiri text-lg w-72 md:text-xl md:w-80 lg:text-lg lg:w-80 xl:text-lg xl:w-80 2xl:text-xl 2xl:w-80 ">Acompanhe os dados históricos do projeto Jiquiri.</p>
                     </div>
 
                     <div className="flex flex-col justify-center items-center w-screen xl:px-32 xl:gap-14 2xl:px-40 2xl:gap-16">
@@ -37,7 +39,7 @@ export default function Relatorios() {
                             </div>
 
                             <div className="flex max-xl:w-screen flex-col lg:flex-row max-xl:justify-center max-xl:items-center gap-4 md:gap-6 lg:gap-8 xl:gap-4 2xl:gap-6 ">
-                                <RadarChartComponent />
+                                <MiniBarComponent />
                                 <div>
                                     <Image
                                         alt="Divisor Vertical"
@@ -45,7 +47,7 @@ export default function Relatorios() {
                                         className="visible max-xl:hidden xl:w-2 xl:h-[24vw] 2xl:w-3 2xl:h-[15vw] opacity-80"
                                     />
                                 </div>
-                                <MiniBarComponent />
+                                <RadarChartComponent />
                             </div>
                             <div>
                                 <Image

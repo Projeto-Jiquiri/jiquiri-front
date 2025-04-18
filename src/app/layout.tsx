@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Roboto, Poppins } from "next/font/google";
 import localFont from 'next/font/local'
 import { ThemeProvider } from "@/components/theme-provider"
-
 import "./globals.css";
+import QueryProvider from "@/services/API/queryClientProvider";
 
 const catilde = localFont({
   src: [
@@ -50,6 +50,7 @@ export const metadata: Metadata = {
   description: "Projeto Jiquiri UFPA",
 };
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -60,14 +61,15 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} ${roboto.variable} ${catilde.variable} antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+        <QueryProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </QueryProvider>
       </body>
     </html>
   );

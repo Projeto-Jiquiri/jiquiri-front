@@ -7,9 +7,27 @@ import LottieAnimation from "../animations/animationLottie";
 import walkingPlant from "@/assets/Animations/walkingPlant.json";
 import teapot from "@/assets/Animations/robot.json";
 import { CalendarDatePick } from "../ui/calendar";
-
+import { useEffect, useState } from "react";
+import { useWeeklyAverages } from "@/services/API/adapters/useWeekAverages";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function CalendarComponent() {
+    const [selectedDate, setSelectedDate] = useState<Date | null>(null)
+    const { data, error, isError, isLoading } = useWeeklyAverages({ specificDate: selectedDate ? selectedDate.toLocaleDateString('pt-BR') : undefined })
+
+    useEffect(() => {
+        console.log("Dados:", data)
+    }, [data])
+
+    const handleDateChange = (date: Date | undefined) => {
+        if (date) {
+            setSelectedDate(date)
+        } else {
+            setSelectedDate(null)
+        }
+    }
+
+    const selectedData = data ? data[0] : null;
 
     return (
         <div className="flex flex-col justify-center items-center gap-12 md:gap-12 lg:gap-16 xl:gap-16 2xl:gap-24">
@@ -33,7 +51,7 @@ export default function CalendarComponent() {
                 />
 
                 <CalendarDatePick
-
+                    onDateChange={handleDateChange}
                 />
 
                 <LottieAnimation
@@ -44,12 +62,18 @@ export default function CalendarComponent() {
                 />
             </div>
 
-            <div className="flex flex-row max-md:flex-col justify-center items-center gap-8 md:gap-20 lg:gap-40 xl:gap-40 2xl:gap-48">
+            <div className="flex flex-row max-md:flex-col justify-center items-center gap-8 md:gap-20 lg:gap-40 xl:gap-40 2xl:gap-56">
                 <div className="flex justify-center items-center gap-8 md:gap-20">
                     <div className="flex flex-col justify-center text-center items-center w-40 gap-4 md:w-40 md:gap-4 lg:w-36 lg:gap-4 xl:w-40 xl:gap-4 2xl:w-48 2xl:gap-4">
                         <h2 className="font-catilde font-light text-Gray_Jiquiri text-lg md:text-xl lg:text-lg xl:text-xl 2xl:text-2xl">Umidade Relativa do solo</h2>
                         <div className="flex justify-center items-center gap-2 md:gap-2 lg:gap-2 xl:gap-2 2xl:gap-2">
-                            <span className="font-poppins text-Light_Green_Jiquiri font-semibold text-lg md:text-xl lg:text-lg xl:text-xl 2xl:text-2xl">38%</span>
+                            {isLoading ? (
+                                <Skeleton className="w-12 h-6 rounded-md bg-Gray_Jiquiri" />
+                            ) : selectedData?.avgSoilHumidity != null ? (
+                                <span className="font-poppins text-Light_Green_Jiquiri font-semibold text-lg md:text-xl lg:text-lg xl:text-xl 2xl:text-2xl">{`${selectedData.avgSoilHumidity}%`}</span>
+                            ) : (
+                                <span className="font-poppins text-Light_Green_Jiquiri font-semibold text-lg md:text-xl lg:text-lg xl:text-xl 2xl:text-2xl">--</span>
+                            )}
                             <Droplet className="size-5 md:size-6 lg:size-4 xl:size-5 2xl:size-5" color={colors.Light_Green_Jiquiri} />
                         </div>
                     </div>
@@ -57,20 +81,32 @@ export default function CalendarComponent() {
                     <div className="flex flex-col justify-center text-center items-center w-40 gap-4 md:w-40 md:gap-4 lg:w-36 lg:gap-4 xl:w-40 xl:gap-4 2xl:w-48 2xl:gap-4">
                         <h2 className="font-catilde font-light text-Gray_Jiquiri text-lg md:text-xl lg:text-lg xl:text-xl 2xl:text-2xl">Temperatura média do Dia</h2>
                         <div className="flex justify-center items-center gap-2 md:gap-2 lg:gap-2 xl:gap-2 2xl:gap-2">
-                            <span className="font-poppins text-Orange_Jiquiri font-semibold text-lg md:text-xl lg:text-lg xl:text-xl 2xl:text-2xl">36 ºC</span>
+                            {isLoading ? (
+                                <Skeleton className="w-14 h-6 rounded-md bg-Gray_Jiquiri" />
+                            ) : selectedData?.avgTemperature != null ? (
+                                <span className="font-poppins text-Orange_Jiquiri font-semibold text-lg md:text-xl lg:text-lg xl:text-xl 2xl:text-2xl">{`${selectedData.avgTemperature} ºC`}</span>
+                            ) : (
+                                <span className="font-poppins text-Orange_Jiquiri font-semibold text-lg md:text-xl lg:text-lg xl:text-xl 2xl:text-2xl">--</span>
+                            )}
                             <Thermometer className="size-5 md:size-6 lg:size-4 xl:size-5 2xl:size-5" color={colors.Orange_Jiquiri} />
                         </div>
                     </div>
                 </div>
 
-                <div className="flex flex-col justify-center text-center items-center w-40 gap-4 md:w-40 md:gap-4 lg:w-36 lg:gap-4 xl:w-40 xl:gap-4 2xl:w-48 2xl:gap-4">
+                <div className="flex flex-col justify-center text-center items-center w-40 gap-4 md:w-40 md:gap-4 lg:w-36 lg:gap-4 xl:w-40 xl:gap-4 2xl:w-48 2xl:gap-4 lg:-ml-20 xl:-ml-24 2xl:-ml-32">
                     <h2 className="font-catilde font-light text-Gray_Jiquiri text-lg md:text-xl lg:text-lg xl:text-xl 2xl:text-2xl">Umidade Relativa do AR</h2>
                     <div className="flex justify-center items-center gap-2 md:gap-2 lg:gap-2 xl:gap-2 2xl:gap-2">
-                        <span className="font-poppins text-Light_Green_Jiquiri font-semibold text-lg md:text-xl lg:text-lg xl:text-xl 2xl:text-2xl">32%</span>
+                        {isLoading ? (
+                            <Skeleton className="w-12 h-6 rounded-md bg-Gray_Jiquiri" />
+                        ) : selectedData?.avgAirHumidity != null ? (
+                            <span className="font-poppins text-Light_Green_Jiquiri font-semibold text-lg md:text-xl lg:text-lg xl:text-xl 2xl:text-2xl">{`${selectedData.avgAirHumidity}%`}</span>
+                        ) : (
+                            <span className="font-poppins text-Light_Green_Jiquiri font-semibold text-lg md:text-xl lg:text-lg xl:text-xl 2xl:text-2xl">--</span>
+                        )}
                         <Cloudy className="size-5 md:size-6 lg:size-4 xl:size-5 2xl:size-5" color={colors.Light_Green_Jiquiri} />
                     </div>
                 </div>
             </div>
         </div>
-    )
+    );
 }
