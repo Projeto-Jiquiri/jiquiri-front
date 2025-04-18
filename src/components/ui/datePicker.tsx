@@ -15,16 +15,26 @@ import { DayPicker, getDefaultClassNames } from "react-day-picker"
 import { ptBR } from "react-day-picker/locale";
 
 import "react-day-picker/style.css";
-import { useFilteredRecords } from "@/services/API/adaptersApiData"
 
-export function DatePicker() {
+interface DatePickerProps {
+    onDateChange?: (date: Date | undefined) => void;
+}
+
+export function DatePicker({ onDateChange }: DatePickerProps) {
     const [date, setDate] = React.useState<Date>()
-    useFilteredRecords(date ? date : "today")
+    const [open, setOpen] = React.useState(false)
     const defaultClassNames = getDefaultClassNames();
 
+    const handleSelect = (selectedDate: Date | undefined) => {
+        setDate(selectedDate);
+        if (onDateChange) {
+            onDateChange(selectedDate);
+        }
+        setOpen(false);
+    };
 
     return (
-        <Popover>
+        <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger asChild>
                 <Button
                     variant={"outline"}
@@ -43,15 +53,13 @@ export function DatePicker() {
                     mode="single"
                     selected={date}
                     locale={ptBR}
-                    onSelect={setDate}
+                    onSelect={handleSelect}
                     classNames={{
                         today: `border-White_Jiquiri text-white bg-slate-500/40 rounded-full`,
                         selected: `bg-White_Jiquiri font-bold text-Black_Jiquiri border-slate-500 rounded-full`,
                         root: `${defaultClassNames.root} shadow-lg p-5 bg-black rounded-xl shadow-lg`,
                         chevron: `fill-White_Jiquiri`,
-
                     }}
-
                 />
             </PopoverContent>
         </Popover>
