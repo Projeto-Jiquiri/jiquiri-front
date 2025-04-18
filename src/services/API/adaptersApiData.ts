@@ -19,12 +19,13 @@ type FlattenedSensors = {
 
 export function useFilteredRecords(filter: FilterType) {
     const {
+        // data: allData,
         isLoading,
         error,
         isError,
     } = useAllRecords()
 
-    const allData = weatherData
+    const allData = weatherData // mock data temporarily
 
     const [filtered, setFiltered] = useState<FlattenedSensors>({
         temperature: [],
@@ -34,7 +35,7 @@ export function useFilteredRecords(filter: FilterType) {
     const [message, setMessage] = useState<string | null>(null)
 
     useEffect(() => {
-        if (!allData.length) return;
+        if (!allData?.length) return;
 
         const now = new Date();
         const todayAt18 = new Date(now);
