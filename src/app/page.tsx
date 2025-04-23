@@ -1,8 +1,8 @@
-import Header from "@/components/header";
+import Header from "@/components/generalComponents/header";
 import TitleHome from "@/components/homepage/titleHome";
 
 import HomeBanner from "@/components/homepage/homeBanner";
-import DefaultFooter from "@/components/defaultFooter";
+import DefaultFooter from "@/components/generalComponents/defaultFooter";
 import ImageHero from "@/components/homepage/homeBanner/imageHero";
 
 

@@ -1,10 +1,10 @@
 
 
 
-import Header from "@/components/header";
+import Header from "@/components/generalComponents/header";
 
-import DefaultFooter from "@/components/defaultFooter";
-import { VerticalDividerDashed } from "@/components/divider";
+import DefaultFooter from "@/components/generalComponents/defaultFooter";
+import { VerticalDividerDashed } from "@/components/generalComponents/divider";
 import WhatIsJiquiri from "@/components/projetoJiquiriPage/whatIsJiquiri";
 
 

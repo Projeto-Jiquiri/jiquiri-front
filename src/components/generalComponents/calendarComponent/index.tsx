@@ -2,11 +2,11 @@
 
 import { colors } from "@/styles/colors";
 import { Cloudy, CornerLeftDown, CornerRightDown, Droplet, Thermometer } from "lucide-react";
-import LottieAnimation from "../animations/animationLottie";
+import LottieAnimation from "../../animations/animationLottie";
 
 import walkingPlant from "@/assets/Animations/walkingPlant.json";
 import teapot from "@/assets/Animations/robot.json";
-import { CalendarDatePick } from "../ui/calendar";
+import { CalendarDatePick } from "../../ui/calendar";
 import { useEffect, useState } from "react";
 import { useWeeklyAverages } from "@/services/API/adapters/useWeekAverages";
 import { Skeleton } from "@/components/ui/skeleton";

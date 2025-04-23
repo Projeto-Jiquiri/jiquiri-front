@@ -1,17 +1,17 @@
 'use client'
 import Image from "next/image";
 
-import { AreaChartComponent } from "@/components/charts/areaChart";
-import { RadarChartComponent } from "@/components/charts/radarChart";
-import Header from "@/components/header";
+import { AreaChartComponent } from "@/components/generalComponents/charts/areaChart";
+import { RadarChartComponent } from "@/components/generalComponents/charts/radarChart";
+import Header from "@/components/generalComponents/header";
 
 import divisorVertical from "@/assets/SVG/dividerVerticalGray.svg";
 import horizontalDividerDashed from "@/assets/SVG/DividerHorizontalDashedGray.svg";
-import { BarChartComponent } from "@/components/charts/barChart";
-import { MiniBarComponent } from "@/components/charts/miniBarChart";
-import CalendarComponent from "@/components/calendarComponent";
-import DefaultFooter from "@/components/defaultFooter";
-import { VerticalDividerDashed } from "@/components/divider";
+import { BarChartComponent } from "@/components/generalComponents/charts/barChart";
+import { MiniBarComponent } from "@/components/generalComponents/charts/miniBarChart";
+import CalendarComponent from "@/components/generalComponents/calendarComponent";
+import DefaultFooter from "@/components/generalComponents/defaultFooter";
+import { VerticalDividerDashed } from "@/components/generalComponents/divider";
 
 
 export default function Relatorios() {

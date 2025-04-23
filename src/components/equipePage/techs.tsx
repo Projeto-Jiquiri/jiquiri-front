@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import TechCube from "@/components/techCube";
+import TechCube from "@/components/generalComponents/techCube";
 import reactLogo from '@/assets/SVG/reactLogo.svg';
 import nextLogo from '@/assets/SVG/next.svg';
 import tailwindLogo from '@/assets/SVG/tailwind.svg';

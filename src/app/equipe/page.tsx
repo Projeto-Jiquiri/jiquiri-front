@@ -1,8 +1,8 @@
 
-import DefaultFooter from "@/components/defaultFooter";
-import { VerticalDividerDashed } from "@/components/divider";
+import DefaultFooter from "@/components/generalComponents/defaultFooter";
+import { VerticalDividerDashed } from "@/components/generalComponents/divider";
 import EquipeMain from "@/components/equipePage/equipeMain";
-import Header from "@/components/header";
+import Header from "@/components/generalComponents/header";
 
 
 
