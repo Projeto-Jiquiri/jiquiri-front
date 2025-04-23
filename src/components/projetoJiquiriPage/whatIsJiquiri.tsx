@@ -24,7 +24,7 @@ export default function WhatIsJiquiri() {
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: whatIsJiquiriRef.current,
-                start: "top 90%",
+                start: "top 70%",
                 end: "bottom 20%",
                 markers: false
             },
