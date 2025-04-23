@@ -7,7 +7,7 @@ import Image from "next/image";
 import dividerComponent from '@/assets/SVG/dividerComponent.svg';
 import horizontalDividerDashed from '@/assets/SVG/DividerHorizontalDashed.svg';
 import logo from '@/assets/PNG/logo.png';
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";

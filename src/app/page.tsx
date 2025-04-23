@@ -1,9 +1,9 @@
 import Header from "@/components/header";
-import TitleHome from "@/components/titleHome";
+import TitleHome from "@/components/homepage/titleHome";
 
-import HomeBanner from "@/components/homeBanner";
+import HomeBanner from "@/components/homepage/homeBanner";
 import DefaultFooter from "@/components/defaultFooter";
-import ImageHero from "@/components/homeBanner/imageHero";
+import ImageHero from "@/components/homepage/homeBanner/imageHero";
 
 
 

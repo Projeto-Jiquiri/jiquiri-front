@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
-import { VerticalDividerDashed } from "../divider"
+import { VerticalDividerDashed } from "../../divider"
 import Hero from "@/assets/PNG/Hero.png";
 
 import gsap from "gsap";
