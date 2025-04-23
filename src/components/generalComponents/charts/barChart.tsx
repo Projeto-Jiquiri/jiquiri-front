@@ -6,7 +6,7 @@ import { format, parse } from 'date-fns' // Importar a função format
 import {
     Thermometer,
     Droplet,
-    Wind,
+    CloudyIcon,
 } from "lucide-react";
 
 import {
@@ -36,7 +36,7 @@ const chartConfig = {
     airHumidity_avg: {
         label: "Umidade/Ar",
         color: colors.Light_Green_Jiquiri,
-        icon: Wind,
+        icon: CloudyIcon,
     },
     soilHumidity_avg: {
         label: "Umidade/Solo",
