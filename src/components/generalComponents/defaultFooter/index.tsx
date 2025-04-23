@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 
 import Link from "next/link";
@@ -12,12 +13,34 @@ import UFPALogo from "@/assets/SVG/UFPA_Logo.svg";
 import UFPAQuilombo from "@/assets/SVG/UniversidadeDoQuilombo.svg"
 import JiquiriLogo from "@/assets/PNG/logo.png";
 
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
+gsap.registerPlugin(ScrollTrigger);
 
 export default function DefaultFooter({ someFooter }: { someFooter?: boolean }) {
+    const footerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: footerRef.current,
+                start: "top 80%",
+                end: "bottom 20%",
+                // scrub: true,
+                // markers: false,
+            },
+        });
+        tl.fromTo(
+            footerRef.current,
+            { opacity: 0, y: 50 },
+            { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
+        )
+    }, []);
+
     return (
-        <div className="flex flex-1 flex-col justify-center items-center gap-16 md:gap-16 lg:gap-20 lg:mt-16 xl:gap-24 mt-14 xl:mt-20 2xl:gap-28 2xl:mt-24">
+        <div ref={footerRef} className="flex flex-1 flex-col justify-center items-center gap-16 md:gap-16 lg:gap-20 lg:mt-16 xl:gap-24 mt-14 xl:mt-20 2xl:gap-28 2xl:mt-24">
             {someFooter ?
                 null
                 :
@@ -36,7 +59,7 @@ export default function DefaultFooter({ someFooter }: { someFooter?: boolean }) 
                                 <Instagram color={colors.Black_Jiquiri} className="size-6 md:size-6 lg:size-4 xl:size-5 2xl:size-6 hover-card" />
                             </Link>
 
-                            <Link href="https://" target="_blank" className="p-2">
+                            <Link href="https://github.com/Projeto-Jiquiri" target="_blank" className="p-2">
                                 <Github color={colors.Black_Jiquiri} className="size-6 md:size-6 lg:size-4 xl:size-5 2xl:size-6 hover-card" />
                             </Link>
                         </div>
