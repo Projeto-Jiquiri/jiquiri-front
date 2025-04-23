@@ -29,8 +29,8 @@ import { colors } from "@/styles/colors"
 import { ArrowDownLeftFromCircle, ThermometerSun } from "lucide-react"
 import { FilterType, useFilteredGetAllRecords } from "@/services/API/adapters/adapterGetAllRecords"
 import { hourLabelMap } from "@/constants/hourLabelMap"
-import { DatePicker } from "../ui/datePicker"
-import { Skeleton } from "../ui/skeleton"
+import { DatePicker } from "../../ui/datePicker"
+import { Skeleton } from "../../ui/skeleton"
 
 const chartConfig = {
     date: {

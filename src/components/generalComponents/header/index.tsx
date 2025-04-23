@@ -36,7 +36,7 @@ export default function Header() {
                             <Link href="https://" target="_blank" className="p-2">
                                 <Instagram className="lg:size-5 xl:size-5 2xl:size-6 hover-card" color={colors.Gray_Jiquiri} />
                             </Link>
-                            <Link href="https://" target="_blank" className="p-2">
+                            <Link href="https://github.com/Projeto-Jiquiri" target="_blank" className="p-2">
                                 <Github className="lg:size-5 xl:size-5 2xl:size-6 hover-card" color={colors.Gray_Jiquiri} />
                             </Link>
                         </div>

@@ -1,8 +1,10 @@
 'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import title from "@/assets/SVG/Title.svg";
 
@@ -14,11 +16,16 @@ import vasoPlanta from "@/assets/Animations/plantaVasoPendurado.json";
 import { useDprStore } from "@/services/context/generalStore";
 
 
+gsap.registerPlugin(ScrollTrigger);
+
+
 export default function TitleHome() {
     const { dpr, setDpr } = useDprStore();
 
-    const [walkingAnimationPlay, setwalkingAnimationPlay] = useState(true);
+    const [walkingAnimationPlay, setWalkingAnimationPlay] = useState(true);
     const [vasoPlantaAnimationPlay, setVasoPlantaAnimationPlay] = useState(true);
+
+    const titleRef = useRef(null);
 
 
     useEffect(() => {
@@ -30,11 +37,29 @@ export default function TitleHome() {
         return () => window.removeEventListener("resize", updateDpr);
     }, [dpr, setDpr]);
 
+    useEffect(() => {
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: titleRef.current,
+                start: "top 100%",
+                end: "top 50%",
+                // scrub: true,
+                // markers: false,
+            },
+        });
+
+        tl.fromTo(
+            titleRef.current,
+            { opacity: 0, y: -100 },
+            { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
+        )
+    }, []);
+
 
     return (
         <div className="flex flex-1 justify-center items-center">
             <div className="flex flex-col justify-center items-center">
-                <div className="flex flex-col justify-center items-center mt-0 md:mt-4 lg:mt-12 xl:mt-14 2xl:mt-20">
+                <div ref={titleRef} className="flex flex-col justify-center items-center mt-0 md:mt-4 lg:mt-12 xl:mt-14 2xl:mt-20">
                     <Image
                         alt="title"
                         src={title}
@@ -48,7 +73,7 @@ export default function TitleHome() {
             <Lottie
                 animationData={walkingPlant}
                 autoPlay
-                onClick={() => setwalkingAnimationPlay(!walkingAnimationPlay)}
+                onClick={() => setWalkingAnimationPlay(!walkingAnimationPlay)}
                 loop={walkingAnimationPlay}
                 className={`absolute z-10 
                     ${dpr > 1 && dpr <= 1.5 ?
