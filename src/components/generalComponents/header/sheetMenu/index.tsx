@@ -35,7 +35,7 @@ export default function MenuSheetMobile() {
                         <Link href="http://" target="_blank" rel="noopener noreferrer" className="hover-card p-2">
                             <Instagram className="size-5 md:size-7" color={colors.Gray_Jiquiri} />
                         </Link>
-                        <Link href="http://" target="_blank" rel="noopener noreferrer" className="hover-card p-2">
+                        <Link href="https://github.com/Projeto-Jiquiri" target="_blank" rel="noopener noreferrer" className="hover-card p-2">
                             <Github className="size-5 md:size-7" color={colors.Gray_Jiquiri} />
                         </Link>
                     </SheetDescription>

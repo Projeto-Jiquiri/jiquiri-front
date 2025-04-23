@@ -59,7 +59,7 @@ export default function DefaultFooter({ someFooter }: { someFooter?: boolean }) 
                                 <Instagram color={colors.Black_Jiquiri} className="size-6 md:size-6 lg:size-4 xl:size-5 2xl:size-6 hover-card" />
                             </Link>
 
-                            <Link href="https://" target="_blank" className="p-2">
+                            <Link href="https://github.com/Projeto-Jiquiri" target="_blank" className="p-2">
                                 <Github color={colors.Black_Jiquiri} className="size-6 md:size-6 lg:size-4 xl:size-5 2xl:size-6 hover-card" />
                             </Link>
                         </div>
