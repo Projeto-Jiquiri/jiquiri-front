@@ -1,7 +1,7 @@
 import { useAllRecords } from '../fetchers/getAllRecords'
 import { useEffect, useState } from 'react'
 import { parse, format, subMonths } from 'date-fns'
-import { weatherData } from '@/constants/weatherData'
+// import { weatherData } from '@/constants/weatherData'
 
 type MonthlyAverages = {
     month: string
@@ -12,13 +12,13 @@ type MonthlyAverages = {
 
 export function useMonthlyAverages() {
     const {
-        // data: allData,
+        data: allData,
         isLoading,
         error,
         isError,
     } = useAllRecords()
 
-    const allData = weatherData // mock data temporariamente
+    // const allData = weatherData // mock data temporariamente
 
     const [averages, setAverages] = useState<MonthlyAverages[]>([])
 
