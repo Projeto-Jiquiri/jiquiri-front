@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react'
 import { isAfter, isBefore, isEqual, startOfMonth, endOfMonth, subMonths, parse } from 'date-fns'
 import { useAllRecords } from '../fetchers/getAllRecords'
-import { weatherData } from '@/constants/weatherData' // mock data temporariamente
+import { IHourlyReadings } from '@/services/interfaces/allRecordsInterface';
+// import { weatherData } from '@/constants/weatherData' // mock data temporariamente
 
-type SensorData = {
-    [key: string]: number
-}
+type SensorData = IHourlyReadings;
 
 type AverageRecord = {
     date: string
@@ -18,13 +17,13 @@ type SelectedMonth = 'current' | 'previous'
 
 export function useDaysAveragesForOneMonth(selectedMonth: SelectedMonth) {
     const {
-        // data: allData,
+        data: allData,
         isLoading: isLoadingApi,
         error,
         isError,
     } = useAllRecords()
 
-    const allData = weatherData // mock data temporariamente
+    // const allData = weatherData // mock data temporariamente
 
     const [averages, setAverages] = useState<AverageRecord[]>([])
     const [message, setMessage] = useState<string | null>(null)
