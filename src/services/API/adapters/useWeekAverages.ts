@@ -1,7 +1,6 @@
 import { useAllRecords } from '../fetchers/getAllRecords'
 import { useEffect, useState } from 'react'
 import { format, subDays, eachDayOfInterval } from 'date-fns'
-// import { weatherData } from '@/constants/weatherData'
 import { IHourlyReadings } from '@/services/interfaces/allRecordsInterface'
 
 type DailyAverages = {
