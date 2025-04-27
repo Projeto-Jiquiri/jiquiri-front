@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { isAfter, isBefore, isEqual, startOfMonth, endOfMonth, subMonths, parse } from 'date-fns'
 import { useAllRecords } from '../fetchers/getAllRecords'
-// import { weatherData } from '@/constants/weatherData' // mock data temporariamente
 import { IHourlyReadings } from '@/services/interfaces/allRecordsInterface';
 
 type SensorData = IHourlyReadings;
