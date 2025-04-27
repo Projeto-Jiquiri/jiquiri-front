@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 
 export async function getAllRecords(): AxiosPromise<ISensorData> {
     try {
-        const response = await api.get<ISensorData>('/api/records');
+        const response = await api.get<ISensorData>('/all_records');
         return response;
 
     } catch (error) {
