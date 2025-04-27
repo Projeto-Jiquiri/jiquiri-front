@@ -1,7 +1,6 @@
 import { useAllRecords } from '../fetchers/getAllRecords'
 import { useEffect, useState } from 'react'
 import { isToday, isYesterday, format, parse, isBefore } from 'date-fns'
-// import { weatherData } from '@/constants/weatherData'
 
 export type FilterType = 'today' | 'yesterday' | 'specific' | Date
 
@@ -25,7 +24,6 @@ export function useFilteredGetAllRecords(filter: FilterType) {
         isError,
     } = useAllRecords()
 
-    // const allData = weatherData // mock data temporarily
 
     const [filtered, setFiltered] = useState<FlattenedSensors>({
         temperature: [],
