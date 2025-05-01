@@ -19,6 +19,9 @@ import lottieLogo from '@/assets/SVG/lottie-logo.svg';
 import rechartsLogo from '@/assets/PNG/recharts.png';
 import lucideLogo from '@/assets/SVG/lucide-logo.svg';
 import shadcnLogo from '@/assets/PNG/shadcn.png';
+import arduinoLogo from '@/assets/SVG/arduino.svg';
+import esp32Logo from '@/assets/SVG/esp32.svg';
+import cLogo from '@/assets/SVG/cLogo.svg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -88,6 +91,15 @@ export default function Techs() {
                     <TechCube title="Python" image={pythonLogo} url="https://www.python.org/" alt="Python Logo" />
                     <TechCube title="Flask" image={flaskLogo} url="https://flask.palletsprojects.com/en/stable/" alt="Flask Logo" />
                     <TechCube title="AWS" image={awsLogo} url="https://aws.amazon.com" alt="AWS Logo" />
+                </div>
+            </div>
+
+            <div ref={backendRef} className="flex flex-col justify-center items-center gap-6 md:gap-6 lg:gap-6 xl:gap-8 2xl:gap-10">
+                <h4 className="font-catilde text-Black_Jiquiri text-xl md:text-2xl lg:text-xl xl:text-2xl 2xl:text-3xl">IoT</h4>
+                <div className="grid grid-cols-2 gap-6 md:grid-cols-3 md:gap-8 lg:grid-cols-3 xl:grid-cols-3 lg:gap-8 xl:gap-10 2xl:grid-cols-3 2xl:gap-10">
+                    <TechCube title="Arduino" image={arduinoLogo} url="https://www.arduino.cc/" alt="Arduino Logo" />
+                    <TechCube title="ESP32" image={esp32Logo} url="https://www.espressif.com/en/products/socs/esp32" alt="ESP32 Logo" />
+                    <TechCube image={cLogo} url="https://en.wikipedia.org/wiki/C_(programming_language)" alt="C Logo" />
                 </div>
             </div>
         </div>
