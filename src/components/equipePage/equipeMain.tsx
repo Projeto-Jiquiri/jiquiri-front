@@ -6,7 +6,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import horizontalDividerDashed from "@/assets/SVG/DividerHorizontalDashedGray.svg";
 import equipeImage from '@/assets/PNG/equipe.png';
-import Techs from "./techs";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -14,7 +13,9 @@ gsap.registerPlugin(ScrollTrigger);
 export default function EquipeMain() {
     const equipeRef = useRef<HTMLDivElement>(null);
     const imageEquipeRef = useRef<HTMLDivElement>(null);
-    const techsTextRef = useRef<HTMLDivElement>(null);
+    const engRef = useRef<HTMLDivElement>(null);
+    const pedRef = useRef<HTMLDivElement>(null);
+    const bioRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const tl = gsap.timeline({
@@ -36,11 +37,21 @@ export default function EquipeMain() {
             { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
             "-=0.5"
         ).fromTo(
-            techsTextRef.current,
+            engRef.current,
             { opacity: 0, y: 50 },
             { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
+            "-=0.5"
+        ).fromTo(
+            pedRef.current,
+            { opacity: 0, y: 50 },
+            { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
+            "-=0.5"
+        ).fromTo(
+            bioRef.current,
+            { opacity: 0, y: 50 },
+            { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
+            "-=0.5"
         )
-
     }, []);
 
     return (
@@ -49,12 +60,12 @@ export default function EquipeMain() {
                 <h1 className="font-catilde text-Black_Jiquiri text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl">Equipe</h1>
 
                 <div className="flex flex-col justify-center items-center gap-4 md:gap-4 lg:gap-6 xl:gap-8 2xl:gap-8">
-                    <h3 className="font-poppins text-Black_Jiquiri text-center w-60 text-base md:w-72 md:text-xl lg:w-80 lg:text-lg xl:text-xl xl:w-96 2xl:text-2xl 2xl:w-96">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h3 className="font-poppins text-Black_Jiquiri text-center w-60 text-base md:w-72 md:text-xl lg:w-80 lg:text-lg xl:text-xl xl:w-96 2xl:text-2xl 2xl:w-96">Saberes que se Conectam 🤝</h3>
                     <p className="font-poppins text-Black_Jiquiri font-extralight text-center w-[65vw] text-base md:w-[55vw] md:text-lg lg:w-[40vw] lg:text-lg xl:w-[40vw] xl:text-xl 2xl:w-[35vw] 2xl:text-xl">
-                        Lorem ipsum dolor sit amet consectetur. Morbi maecenas est nisi pellentesque sit nisl. Morbi faucibus blandit turpis nec duis ut pellentesque venenatis tellus.
+                        O Projeto <span className="font-light">Jiquiri</span> é feito por pessoas de diferentes áreas que trabalham juntas com um mesmo propósito: unir tecnologia, educação e cuidado com a terra. Estudantes e professores dos cursos de <span className="font-light">Engenharia da Computação</span> e <span className="font-light">Pedagogia</span> da UFPA - Castanhal somam forças, trocam experiências e constroem soluções que fazem sentido para as pessoas e para o meio ambiente.
                         <br />
                         <br />
-                        Porttitor tristique blandit proin commodo bibendum commodo integer. Enim at praesent arcu proin arcu viverra mattis. Elit mauris aliquet nisl etiam enim.
+                        Essa mistura de conhecimentos torna o projeto mais completo, mais humano e mais próximo das realidades que queremos transformar.
                     </p>
                 </div>
             </div>
@@ -67,15 +78,34 @@ export default function EquipeMain() {
                 />
             </div>
 
-            <div ref={techsTextRef} className="flex flex-col justify-center items-center gap-4 md:gap-4 lg:gap-4 xl:gap-4 2xl:gap-8">
-                <h3 className="font-catilde font-semibold text-center text-Black_Jiquiri w-60 text-xl md:w-72 md:text-2xl lg:w-72 lg:text-xl xl:w-80 xl:text-2xl 2xl:w-80 2xl:text-3xl">Tecnologias Utilizadas no Projeto</h3>
-                <p className="font-poppins text-Black_Jiquiri font-extralight text-center w-[65vw] text-base md:w-[60vw] md:text-xl lg:w-[40vw] lg:text-lg xl:w-[40vw] xl:text-xl 2xl:w-[35vw] 2xl:text-xl">
-                    Lorem ipsum dolor sit amet consectetur. Morbi maecenas est nisi pellentesque sit nisl. Morbi faucibus blandit turpis nec duis ut pellentesque venenatis tellus.
-                    Porttitor tristique blandit proin commodo bibendum commodo integer
+            <div ref={engRef} className="flex flex-col justify-center items-center gap-4 md:gap-4 lg:gap-6 xl:gap-8 2xl:gap-8">
+                <h3 className="font-poppins text-Black_Jiquiri text-center w-60 text-base md:w-72 md:text-xl lg:w-80 lg:text-lg xl:text-xl xl:w-96 2xl:text-2xl 2xl:w-96">Técnico • Engenharia da Computação 🤖 </h3>
+                <p className="font-poppins text-Black_Jiquiri font-extralight text-center w-[65vw] text-base md:w-[55vw] md:text-lg lg:w-[40vw] lg:text-lg xl:w-[40vw] xl:text-xl 2xl:w-[35vw] 2xl:text-xl">
+                    A equipe de engenharia é a espinha dorsal tecnológica do projeto <span className="font-light">Jiquiri</span>. Formada por estudantes e profissionais da <span className="font-light">Engenharia da Computação</span>, essa área foi responsável pelo desenvolvimento dos sistemas de automação e sensoriamento ambiental.
+                    <br />
+                    <br />
+                    Utilizando microcontroladores de baixo custo, como o <span className="font-light">Arduino</span>, além de serviços em nuvem como a <span className="font-light">AWS</span>, a equipe construiu uma estrutura robusta e escalável para a coleta, processamento e visualização de dados. A criação de um sistema completo, que envolve tanto o <span className="font-light">back-end</span> para o gerenciamento das informações quanto o <span className="font-light">front-end</span> para exibição acessível e intuitiva dos dados, permite análises ambientais precisas e em tempo real. Essa integração entre hardware, software e rede amplia o potencial de pesquisa interdisciplinar e contribui diretamente para o desenvolvimento de soluções tecnológicas voltadas à sustentabilidade.                </p>
+            </div>
+
+            <div ref={pedRef} className="flex flex-col justify-center items-center gap-4 md:gap-4 lg:gap-6 xl:gap-8 2xl:gap-8">
+                <h3 className="font-poppins text-Black_Jiquiri text-center w-60 text-base md:w-72 md:text-xl lg:w-80 lg:text-lg xl:text-xl xl:w-96 2xl:text-2xl 2xl:w-96">Humanidades • Pedagogia 🧑🏽‍🏫 </h3>
+                <p className="font-poppins text-Black_Jiquiri font-extralight text-center w-[65vw] text-base md:w-[55vw] md:text-lg lg:w-[40vw] lg:text-lg xl:w-[40vw] xl:text-xl 2xl:w-[35vw] 2xl:text-xl">
+                    A equipe da pedagogia desenvolve a dimensão humanística do projeto, promovendo uma abordagem crítica e sensível sobre os aspectos culturais, sociais e educativos envolvidos. Com foco nos estudos sobre os povos quilombolas e seus modos de vida, essa área atua na valorização dos saberes tradicionais e na produção de reflexões que conectam ciência, cultura e identidade.
+                    <br />
+                    <br />
+                    A pedagogia contribui ainda na elaboração de metodologias e estratégias de divulgação que respeitam e fortalecem o diálogo entre o conhecimento acadêmico e os saberes populares. Ao incorporar uma perspectiva social ao projeto, essa área amplia o alcance e o significado do Jiquiri dentro e fora do ambiente universitário, mostrando que inovação verdadeira também se constrói com escuta, respeito e inclusão.
                 </p>
             </div>
 
-            <Techs />
+            <div ref={bioRef} className="flex flex-col justify-center items-center gap-4 md:gap-4 lg:gap-6 xl:gap-8 2xl:gap-8">
+                <h3 className="font-poppins text-Black_Jiquiri text-center w-60 text-base md:w-72 md:text-xl lg:w-80 lg:text-lg xl:text-xl xl:w-96 2xl:text-2xl 2xl:w-96">Sustentabilidade • Biologia 🌱 </h3>
+                <p className="font-poppins text-Black_Jiquiri font-extralight text-center w-[65vw] text-base md:w-[55vw] md:text-lg lg:w-[40vw] lg:text-lg xl:w-[40vw] xl:text-xl 2xl:w-[35vw] 2xl:text-xl">
+                    A área de biologia tem papel fundamental na compreensão e análise dos impactos ecológicos relacionados ao uso dos recursos naturais. A equipe contribui com uma visão crítica e científica sobre o comportamento dos ecossistemas, avaliando os dados ambientais obtidos pelo sistema automatizado e propondo interpretações que fortalecem o compromisso ambiental do projeto.
+                    <br />
+                    <br />
+                    Essa integração entre tecnologia e ciência biológica permite uma análise profunda sobre temas como conservação da água, equilíbrio do solo e microclimas locais. O trabalho da biologia, nesse contexto, não só valida o uso dos dados coletados como também amplia sua relevância científica para pesquisas voltadas à sustentabilidade e ao enfrentamento das mudanças climáticas.
+                </p>
+            </div>
 
             <div className="flex justify-center items-center w-screen ">
                 <Image
