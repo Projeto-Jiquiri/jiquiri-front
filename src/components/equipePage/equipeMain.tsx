@@ -13,6 +13,9 @@ gsap.registerPlugin(ScrollTrigger);
 export default function EquipeMain() {
     const equipeRef = useRef<HTMLDivElement>(null);
     const imageEquipeRef = useRef<HTMLDivElement>(null);
+    const engRef = useRef<HTMLDivElement>(null);
+    const pedRef = useRef<HTMLDivElement>(null);
+    const bioRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const tl = gsap.timeline({
@@ -30,6 +33,21 @@ export default function EquipeMain() {
             { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
         ).fromTo(
             imageEquipeRef.current,
+            { opacity: 0, y: 50 },
+            { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
+            "-=0.5"
+        ).fromTo(
+            engRef.current,
+            { opacity: 0, y: 50 },
+            { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
+            "-=0.5"
+        ).fromTo(
+            pedRef.current,
+            { opacity: 0, y: 50 },
+            { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
+            "-=0.5"
+        ).fromTo(
+            bioRef.current,
             { opacity: 0, y: 50 },
             { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
             "-=0.5"
@@ -60,7 +78,7 @@ export default function EquipeMain() {
                 />
             </div>
 
-            <div className="flex flex-col justify-center items-center gap-4 md:gap-4 lg:gap-6 xl:gap-8 2xl:gap-8">
+            <div ref={engRef} className="flex flex-col justify-center items-center gap-4 md:gap-4 lg:gap-6 xl:gap-8 2xl:gap-8">
                 <h3 className="font-poppins text-Black_Jiquiri text-center w-60 text-base md:w-72 md:text-xl lg:w-80 lg:text-lg xl:text-xl xl:w-96 2xl:text-2xl 2xl:w-96">Técnico • Engenharia da Computação 🤖 </h3>
                 <p className="font-poppins text-Black_Jiquiri font-extralight text-center w-[65vw] text-base md:w-[55vw] md:text-lg lg:w-[40vw] lg:text-lg xl:w-[40vw] xl:text-xl 2xl:w-[35vw] 2xl:text-xl">
                     A equipe de engenharia é a espinha dorsal tecnológica do projeto <span className="font-light">Jiquiri</span>. Formada por estudantes e profissionais da <span className="font-light">Engenharia da Computação</span>, essa área foi responsável pelo desenvolvimento dos sistemas de automação e sensoriamento ambiental.
@@ -69,7 +87,7 @@ export default function EquipeMain() {
                     Utilizando microcontroladores de baixo custo, como o <span className="font-light">Arduino</span>, além de serviços em nuvem como a <span className="font-light">AWS</span>, a equipe construiu uma estrutura robusta e escalável para a coleta, processamento e visualização de dados. A criação de um sistema completo, que envolve tanto o <span className="font-light">back-end</span> para o gerenciamento das informações quanto o <span className="font-light">front-end</span> para exibição acessível e intuitiva dos dados, permite análises ambientais precisas e em tempo real. Essa integração entre hardware, software e rede amplia o potencial de pesquisa interdisciplinar e contribui diretamente para o desenvolvimento de soluções tecnológicas voltadas à sustentabilidade.                </p>
             </div>
 
-            <div className="flex flex-col justify-center items-center gap-4 md:gap-4 lg:gap-6 xl:gap-8 2xl:gap-8">
+            <div ref={pedRef} className="flex flex-col justify-center items-center gap-4 md:gap-4 lg:gap-6 xl:gap-8 2xl:gap-8">
                 <h3 className="font-poppins text-Black_Jiquiri text-center w-60 text-base md:w-72 md:text-xl lg:w-80 lg:text-lg xl:text-xl xl:w-96 2xl:text-2xl 2xl:w-96">Humanidades • Pedagogia 🧑🏽‍🏫 </h3>
                 <p className="font-poppins text-Black_Jiquiri font-extralight text-center w-[65vw] text-base md:w-[55vw] md:text-lg lg:w-[40vw] lg:text-lg xl:w-[40vw] xl:text-xl 2xl:w-[35vw] 2xl:text-xl">
                     A equipe da pedagogia desenvolve a dimensão humanística do projeto, promovendo uma abordagem crítica e sensível sobre os aspectos culturais, sociais e educativos envolvidos. Com foco nos estudos sobre os povos quilombolas e seus modos de vida, essa área atua na valorização dos saberes tradicionais e na produção de reflexões que conectam ciência, cultura e identidade.
@@ -79,7 +97,7 @@ export default function EquipeMain() {
                 </p>
             </div>
 
-            <div className="flex flex-col justify-center items-center gap-4 md:gap-4 lg:gap-6 xl:gap-8 2xl:gap-8">
+            <div ref={bioRef} className="flex flex-col justify-center items-center gap-4 md:gap-4 lg:gap-6 xl:gap-8 2xl:gap-8">
                 <h3 className="font-poppins text-Black_Jiquiri text-center w-60 text-base md:w-72 md:text-xl lg:w-80 lg:text-lg xl:text-xl xl:w-96 2xl:text-2xl 2xl:w-96">Sustentabilidade • Biologia 🌱 </h3>
                 <p className="font-poppins text-Black_Jiquiri font-extralight text-center w-[65vw] text-base md:w-[55vw] md:text-lg lg:w-[40vw] lg:text-lg xl:w-[40vw] xl:text-xl 2xl:w-[35vw] 2xl:text-xl">
                     A área de biologia tem papel fundamental na compreensão e análise dos impactos ecológicos relacionados ao uso dos recursos naturais. A equipe contribui com uma visão crítica e científica sobre o comportamento dos ecossistemas, avaliando os dados ambientais obtidos pelo sistema automatizado e propondo interpretações que fortalecem o compromisso ambiental do projeto.
