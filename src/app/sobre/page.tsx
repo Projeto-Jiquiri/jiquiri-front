@@ -2,6 +2,7 @@
 import Header from "@/components/generalComponents/header";
 import AboutMain from "@/components/aboutPage/aboutMain";
 import DefaultFooter from "@/components/generalComponents/defaultFooter";
+import Techs from "@/components/equipePage/techs";
 
 
 export default function SobrePage() {
@@ -11,6 +12,8 @@ export default function SobrePage() {
                 <Header />
 
                 <AboutMain />
+
+                <Techs />
 
                 <DefaultFooter />
 

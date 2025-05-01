@@ -6,7 +6,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import horizontalDividerDashed from "@/assets/SVG/DividerHorizontalDashedGray.svg";
 import equipeImage from '@/assets/PNG/equipe.png';
-import Techs from "./techs";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -14,7 +13,6 @@ gsap.registerPlugin(ScrollTrigger);
 export default function EquipeMain() {
     const equipeRef = useRef<HTMLDivElement>(null);
     const imageEquipeRef = useRef<HTMLDivElement>(null);
-    const techsTextRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const tl = gsap.timeline({
@@ -35,12 +33,7 @@ export default function EquipeMain() {
             { opacity: 0, y: 50 },
             { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
             "-=0.5"
-        ).fromTo(
-            techsTextRef.current,
-            { opacity: 0, y: 50 },
-            { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
         )
-
     }, []);
 
     return (
@@ -66,16 +59,6 @@ export default function EquipeMain() {
                     className="w-[75vw] md:w-[65vw] lg:w-[45vw] xl:w-[40vw] 2xl:w-[38vw] h-auto"
                 />
             </div>
-
-            <div ref={techsTextRef} className="flex flex-col justify-center items-center gap-4 md:gap-4 lg:gap-4 xl:gap-4 2xl:gap-8">
-                <h3 className="font-catilde font-semibold text-center text-Black_Jiquiri w-60 text-xl md:w-72 md:text-2xl lg:w-72 lg:text-xl xl:w-80 xl:text-2xl 2xl:w-80 2xl:text-3xl">Tecnologias Utilizadas no Projeto</h3>
-                <p className="font-poppins text-Black_Jiquiri font-extralight text-center w-[65vw] text-base md:w-[60vw] md:text-xl lg:w-[40vw] lg:text-lg xl:w-[40vw] xl:text-xl 2xl:w-[35vw] 2xl:text-xl">
-                    Lorem ipsum dolor sit amet consectetur. Morbi maecenas est nisi pellentesque sit nisl. Morbi faucibus blandit turpis nec duis ut pellentesque venenatis tellus.
-                    Porttitor tristique blandit proin commodo bibendum commodo integer
-                </p>
-            </div>
-
-            <Techs />
 
             <div className="flex justify-center items-center w-screen ">
                 <Image
