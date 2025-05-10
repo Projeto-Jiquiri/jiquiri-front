@@ -4,6 +4,7 @@ import localFont from 'next/font/local'
 import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css";
 import QueryProvider from "@/services/API/queryClientProvider";
+import Clarity from '@microsoft/clarity';
 
 const catilde = localFont({
   src: [
@@ -50,6 +51,10 @@ export const metadata: Metadata = {
   description: "Projeto Jiquiri UFPA",
 };
 
+
+const projectId = "rhix9be4o5";
+
+Clarity.init(projectId);
 
 export default function RootLayout({
   children,
