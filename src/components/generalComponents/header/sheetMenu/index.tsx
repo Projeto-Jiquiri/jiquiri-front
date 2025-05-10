@@ -12,11 +12,13 @@ import {
     SheetHeader,
     SheetTitle,
     SheetTrigger,
+    SheetFooter
 } from "@/components/ui/sheet"
 import { Github, HomeIcon, Info, Instagram, Menu, NotebookText, TreeDeciduous, Users } from "lucide-react";
 
 import Logo from "@/assets/PNG/logo.png";
 import { colors } from "@/styles/colors";
+import ChatSheetMenu from "../../chatSheetMenu";
 
 export default function MenuSheetMobile() {
     const [modalOpen, setModalOpen] = useState(false)
@@ -62,6 +64,9 @@ export default function MenuSheetMobile() {
                         <h3 className="font-poppins font-medium text-lg md:text-2xl tracking-wide ">Sobre</h3>
                     </Link>
                 </div>
+                <SheetFooter>
+                    <ChatSheetMenu />
+                </SheetFooter>
             </SheetContent>
         </Sheet >
 

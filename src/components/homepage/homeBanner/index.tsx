@@ -27,31 +27,31 @@ export default function HomeBanner() {
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: buttonsRef.current,
-                start: "top 90%",
-                end: "bottom 20%",
+                start: "top 120%",
+                end: "top 30%",
                 // scrub: true,
-                // markers: false,
+                // markers: true,
             },
         });
 
         tl.fromTo(
             leftTextRef.current,
             { opacity: 0, x: -50 },
-            { opacity: 1, x: 0, duration: 1, ease: "power2.out" }
+            { opacity: 1, x: 0, duration: .6, ease: "power2.out" }
         ).fromTo(
             rightTextRef.current,
             { opacity: 0, x: 50 },
-            { opacity: 1, x: 0, duration: 1, ease: "power2.out" },
+            { opacity: 1, x: 0, duration: .7, ease: "power2.out" },
             "<"
         ).fromTo(
             logoRef.current,
             { opacity: 0, y: 50 },
-            { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
+            { opacity: 1, y: 0, duration: .8, ease: "power2.out" },
             "<"
         ).fromTo(
             buttonsRef.current,
             { opacity: 0, y: 50 },
-            { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
+            { opacity: 1, y: 0, duration: .9, ease: "power2.out" },
             "<"
         );
     }, []);

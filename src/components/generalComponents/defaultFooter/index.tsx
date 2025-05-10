@@ -26,8 +26,8 @@ export default function DefaultFooter({ someFooter }: { someFooter?: boolean }) 
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: footerRef.current,
-                start: "top 80%",
-                end: "bottom 20%",
+                start: "top 120%",
+                end: "top 30%",
                 // scrub: true,
                 // markers: false,
             },
@@ -73,22 +73,26 @@ export default function DefaultFooter({ someFooter }: { someFooter?: boolean }) 
                         </div>
 
                         <div className="flex justify-center items-center gap-16 md:gap-24 lg:gap-32 xl:gap-36 2xl:gap-40">
-                            <Image
-                                alt="UFPA Logo"
-                                src={UFPALogo}
-                                className="size-16 md:size-24 lg:size-24 xl:size-28 2xl:size-32 select-none"
-                                draggable={false}
-                            />
-
-                            <div className="flex flex-col justify-center items-center" draggable={false}>
+                            <a href="https://campuscastanhal.ufpa.br/" target="_blank" rel="noopener noreferrer">
                                 <Image
                                     alt="UFPA Logo"
-                                    src={JiquiriLogo}
-                                    className="size-16 md:size-20 lg:size-14 xl:size-16 2xl:size-20 select-none"
+                                    src={UFPALogo}
+                                    className="size-16 md:size-24 lg:size-24 xl:size-28 2xl:size-32 select-none"
                                     draggable={false}
                                 />
-                                <h5 className="text-lg md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-catilde font-semibold text-Black_Jiquiri text-center tracking-wider select-none">JIQUIRI</h5>
-                            </div>
+                            </a>
+
+                            <a href="http://projetojiquiri.cloud">
+                                <div className="flex flex-col justify-center items-center" draggable={false}>
+                                    <Image
+                                        alt="Jiquiri Logo"
+                                        src={JiquiriLogo}
+                                        className="size-16 md:size-20 lg:size-14 xl:size-16 2xl:size-20 select-none"
+                                        draggable={false}
+                                    />
+                                    <h5 className="text-lg md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-catilde font-semibold text-Black_Jiquiri text-center tracking-wider select-none">JIQUIRI</h5>
+                                </div>
+                            </a>
 
                             <Image
                                 alt="UFPA Quilombo Logo"
@@ -100,13 +104,19 @@ export default function DefaultFooter({ someFooter }: { someFooter?: boolean }) 
                     </div>
                 </div>}
 
-            <footer className="flex w-screen justify-between max-md:justify-center items-center opacity-80 px-2 py-2 md:px-4 md:my-1 lg:px-4 lg:py-2 xl:px-6 xl:py-2 2xl:px-8 2xl:py-2 ">
-                <p className="visible max-md:hidden text-Gray_Jiquiri text-xs md:text-xs lg:text-xs xl:text-sm 2xl:text-sm font-light font-poppins tracking-wider">campuscastanhal.ufpa.br</p>
+            <footer className="flex w-screen justify-between max-md:justify-center items-center opacity-50 px-2 py-2 md:px-4 md:my-1 lg:px-4 lg:py-2 xl:px-6 xl:py-2 2xl:px-8 2xl:py-2 ">
+                <a href="http://campuscastanhal.ufpa.br" target="_blank" rel="noopener noreferrer">
+                    <p className="visible max-md:hidden text-Gray_Jiquiri text-xs md:text-xs lg:text-xs xl:text-sm 2xl:text-sm font-light font-poppins tracking-wider">campuscastanhal.ufpa.br</p>
+                </a>
+
                 <p className="text-Gray_Jiquiri text-xs md:text-xs lg:text-xs xl:text-sm 2xl:text-sm font-light font-poppins tracking-wider">© {new Date().getFullYear()} - Todos os Direitos Reservados - Projeto Jiquiri</p>
-                <div className="flex visible max-md:hidden justify-center items-center gap-2 opacity-50">
-                    <Brush className="md:size-3 lg:size-2 xl:size-3 2xl:size-4" color={colors.Gray_Jiquiri} />
-                    <p className="text-Gray_Jiquiri text-xs md:text-xs lg:text-xs xl:text-sm 2xl:text-sm font-light font-poppins tracking-wider">_gus.dev</p>
-                </div>
+
+                <a href="https://guhportfolio.vercel.app/" target="_blank" rel="noopener noreferrer">
+                    <div className="flex visible max-md:hidden justify-center items-center gap-2 opacity-50">
+                        <Brush className="md:size-3 lg:size-2 xl:size-3 2xl:size-4" color={colors.Gray_Jiquiri} />
+                        <p className="text-Gray_Jiquiri text-xs md:text-xs lg:text-xs xl:text-sm 2xl:text-sm font-light font-poppins tracking-wider">_gus.dev</p>
+                    </div>
+                </a>
             </footer>
         </div>
     )

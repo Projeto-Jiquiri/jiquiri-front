@@ -33,26 +33,26 @@ export default function CalendarComponent() {
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: calendarRef.current,
-                start: "top 70%",
-                end: "bottom 20%",
+                start: "top 120%",
+                end: "top 30%",
             },
         });
         tl.fromTo(
             leftTextRef.current,
             { opacity: 0, x: -50 },
-            { opacity: 1, x: 0, duration: 0.5 }
+            { opacity: 1, x: 0, duration: .2 }
         ).fromTo(
             rightTextRef.current,
             { opacity: 0, x: 50 },
-            { opacity: 1, x: 0, duration: .6 },
+            { opacity: 1, x: 0, duration: .3 },
         ).fromTo(
             calendarRef.current,
             { opacity: 0, y: -50 },
-            { opacity: 1, y: 0, duration: .7 },
+            { opacity: 1, y: 0, duration: .4 },
         ).fromTo(
             resultRef.current,
             { opacity: 0, y: -50 },
-            { opacity: 1, y: 0, duration: .8 },
+            { opacity: 1, y: 0, duration: .5 },
         );
     }, [])
 
