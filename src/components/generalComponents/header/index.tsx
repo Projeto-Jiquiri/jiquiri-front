@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { BotMessageSquare, Github, Instagram } from "lucide-react";
+import { Github, Instagram } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 import logo from '@/assets/PNG/logo.png';
@@ -10,6 +10,7 @@ import { colors } from "@/styles/colors";
 import MenuSheetMobile from "./sheetMenu";
 
 import Logo from '@/assets/PNG/logo.png';
+import ChatSheetMenu from "../chatSheetMenu";
 
 
 export default function Header() {
@@ -42,10 +43,7 @@ export default function Header() {
                         </div>
 
                         <div className="flex justify-center items-center">
-                            <button className="flex justify-center items-center hover:opacity-90 gap-2 bg-Black_Jiquiri rounded-full text-White_Jiquiri font-poppins font-semibold text-center py-1.5 px-6 shadow-sm lg:text-sm xl:text-base 2xl:text-lg">
-                                Chat
-                                <BotMessageSquare className="lg:size-5 xl:size-5 2xl:size-6" color={colors.White_Jiquiri} />
-                            </button>
+                            <ChatSheetMenu />
                         </div>
                     </div>
                 </div>

@@ -19,6 +19,7 @@ export default function WhatIsJiquiri() {
     const whatIsJiquiriRef = useRef<HTMLDivElement>(null);
     const greenBannerRef = useRef<HTMLDivElement>(null);
     const whatIsJiquiriFooterRef = useRef<HTMLDivElement>(null);
+    const culturaRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const tl = gsap.timeline({
@@ -32,16 +33,20 @@ export default function WhatIsJiquiri() {
         tl.fromTo(
             whatIsJiquiriRef.current,
             { opacity: 0, y: 50 },
-            { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
+            { opacity: 1, y: 0, duration: .8, ease: "power2.out" }
         ).fromTo(
             greenBannerRef.current,
             { opacity: 0, x: 500 },
-            { opacity: 1, x: 0, duration: 2, ease: "power2.out" },
+            { opacity: 1, x: 0, duration: .7, ease: "power2.out" },
         ).fromTo(
             whatIsJiquiriFooterRef.current,
             { opacity: 0, y: 80 },
-            { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
+            { opacity: 1, y: 0, duration: .8, ease: "power2.out" },
             "-=0.5"
+        ).fromTo(
+            culturaRef.current,
+            { opacity: 0, y: 80 },
+            { opacity: 1, y: 0, duration: .9, ease: "power2.out" },
         );
 
     }, []);
@@ -109,7 +114,7 @@ export default function WhatIsJiquiri() {
                     />
                 </div>
 
-                <div className="flex flex-col justify-center items-center gap-6 md:gap-8 lg:-gap-8 xl:gap-6 2xl:gap-8">
+                <div ref={culturaRef} className="flex flex-col justify-center items-center gap-6 md:gap-8 lg:-gap-8 xl:gap-6 2xl:gap-8">
                     <h3 className="font-poppins text-Black_Jiquiri text-center text-lg w-80 md:text-lg lg:text-lg lg:w-80 md:w-72 xl:text-xl xl:w-80 2xl:text-2xl 2xl:w-96">Plantando Inovação, Cultivando Cultura 🌍</h3>
                     <p className="font-poppins font-extralight text-Black_Jiquiri text-center text-base w-80 md:text-base md:w-72 lg:text-base lg:w-80 xl:text-base xl:w-80 2xl:text-lg 2xl:w-96">
                         Além dos impactos ambientais e econômicos, o Jiquiri reforça a importância do diálogo entre o conhecimento científico e os saberes tradicionais. As comunidades quilombolas carregam em seus modos de vida um profundo respeito à terra, às águas e ao tempo da natureza. O projeto busca registrar, valorizar e apresentar esses costumes em sua essência, promovendo a convivência e o aprendizado mútuo entre culturas.

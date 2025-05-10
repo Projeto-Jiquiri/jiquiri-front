@@ -31,11 +31,11 @@ export default function AboutMain() {
         tl.fromTo(
             aboutTitleRef.current,
             { opacity: 0, y: -50 },
-            { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
+            { opacity: 1, y: 0, duration: .8, ease: "power2.out" },
         ).fromTo(
             greetingBannerRef.current,
             { opacity: 0, x: -500 },
-            { opacity: 1, x: 0, duration: 1.5, ease: "power2.out" },
+            { opacity: 1, x: 0, duration: .9, ease: "power2.out" },
         );
 
     }, []);

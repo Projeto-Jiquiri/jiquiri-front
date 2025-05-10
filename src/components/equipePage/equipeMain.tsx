@@ -21,8 +21,8 @@ export default function EquipeMain() {
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: equipeRef.current,
-                start: "top 80%",
-                end: "bottom 20%",
+                start: "top 120%",
+                end: "top 30%",
                 // scrub: true,
                 // markers: false,
             },
@@ -30,7 +30,7 @@ export default function EquipeMain() {
         tl.fromTo(
             equipeRef.current,
             { opacity: 0, y: 50 },
-            { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
+            { opacity: 1, y: 0, duration: .8, ease: "power2.out" }
         ).fromTo(
             imageEquipeRef.current,
             { opacity: 0, y: 50 },

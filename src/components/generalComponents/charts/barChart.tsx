@@ -153,7 +153,7 @@ export function BarChartComponent() {
                         Gráfico de barras com dados de temperatura, umidade do ar e do solo por dia.
                     </CardDescription>
                 </div>
-                <div className="flex">
+                <div className="flex flex-wrap border-t sm:flex-nowrap sm:border-t-0">
                     {/* Botões para alternar entre os tipos de dados */}
                     {Object.keys(chartConfig).map((key) => {
                         const chart = key as keyof typeof chartConfig;
@@ -163,15 +163,15 @@ export function BarChartComponent() {
                             <button
                                 key={chart}
                                 data-active={activeChart === chart}
-                                className="relative z-30 flex flex-1 cursor-pointer flex-col justify-center gap-1 border-t px-6 py-4 text-left even:border-l data-[active=true]:bg-muted/50 sm:border-l sm:border-t-0 sm:px-8 sm:py-6"
+                                className="relative z-30 flex min-w-[50%] flex-1 basis-1/2 cursor-pointer flex-col justify-center gap-1 border-b border-r px-4 py-3 text-left data-[active=true]:bg-muted/50 sm:min-w-0 sm:basis-auto sm:border-b-0 sm:border-l sm:border-r-0 sm:border-t-0 sm:px-6 sm:py-4"
                                 onClick={() => setActiveChart(chart)}
                             >
                                 <span className="flex items-center gap-1 text-xs text-muted-foreground">
                                     <Icon className="h-3 w-3 shrink-0" style={{ color: chartConfig[chart].color }} />
-                                    {label}
+                                    <span className="truncate">{label}</span>
                                 </span>
 
-                                <span className="text-lg font-bold leading-none sm:text-3xl">
+                                <span className="text-base font-bold leading-none sm:text-lg md:text-xl lg:text-2xl">
                                     {averagesWithTotal[chart].toFixed(1)}
                                 </span>
                             </button>

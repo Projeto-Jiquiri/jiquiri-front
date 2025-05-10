@@ -18,8 +18,8 @@ export default function ImageHero() {
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: imageRef.current,
-                start: "top 80%",
-                end: "bottom 20%",
+                start: "top 120%",
+                end: "top 30%",
                 // scrub: true,
                 // markers: false,
             },

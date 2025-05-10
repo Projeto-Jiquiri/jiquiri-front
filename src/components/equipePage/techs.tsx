@@ -35,13 +35,18 @@ export default function Techs() {
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: frontendRef.current,
-                start: "top 80%",
-                end: "bottom 20%",
+                start: "top 120%",
+                end: "top 30%",
                 // scrub: true,
                 // markers: false,
             },
         });
         tl.fromTo(
+            techsTextRef.current,
+            { opacity: 0, y: 50 },
+            { opacity: 1, y: 0, duration: 1.2, ease: "power2.out" },
+            "-=0.5"
+        ).fromTo(
             frontendRef.current,
             { opacity: 0, y: 50 },
             { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
@@ -49,11 +54,6 @@ export default function Techs() {
             backendRef.current,
             { opacity: 0, y: 50 },
             { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
-        ).fromTo(
-            techsTextRef.current,
-            { opacity: 0, y: 50 },
-            { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
-            "-=0.5"
         )
     }, []);
 
