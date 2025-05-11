@@ -92,10 +92,10 @@ export default function Chatbot() {
     }
 
     return (
-        <div className="w-full mx-auto p-4 flex flex-col h-screen pb-20">
+        <div className="w-full mx-auto p-4 flex flex-col max-h-screen min-h-screen pb-20">
             <Card className="flex flex-col flex-grow">
                 <CardContent className="flex-grow p-4 overflow-hidden">
-                    <ScrollArea className="h-[55vh] space-y-2 overflow-y-auto flex flex-col">
+                    <ScrollArea className="h-[45vh] space-y-2 overflow-y-auto flex flex-col">
                         {messages.map((msg, index) => (
                             <div
                                 key={index}

@@ -21,7 +21,7 @@ export default function ChatSheetMenu() {
                     <BotMessageSquare className="lg:size-5 xl:size-5 2xl:size-6" color={colors.White_Jiquiri} />
                 </button>
             </SheetTrigger>
-            <SheetContent className="2xl:min-w-xl">
+            <SheetContent className="2xl:min-w-xl ">
                 <SheetHeader>
                     <SheetTitle className="font-poppins text-2xl flex justify-center items-center flex-row text-Black_Jiquiri gap-2">Pergunte ao Chat <BotMessageSquare className="lg:size-5 xl:size-5 2xl:size-6" color={colors.Black_Jiquiri} /></SheetTitle>
                     <SheetDescription asChild>
