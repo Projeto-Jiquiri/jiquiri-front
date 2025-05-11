@@ -74,9 +74,9 @@ export default function Chatbot() {
     function handleSuggestionClick(suggestion: string) {
         const fullQuestions: Record<string, string> = {
             "Temperatura amanhã às 06?": "Qual será a temperatura amanhã às 06?",
-            "Previsão fim de semana": "Qual a previsão do tempo para o fim de semana?",
-            "Tempo agora em Jiquiri": "Como está o tempo agora em Jiquiri?",
-            "Mínima esta semana": "Qual a temperatura mínima prevista para esta semana?"
+            "Média da umidade do ar?": "Qual a média da umidade do ar?",
+            "Maior temperatura do dia?": "Qual a maior temperatura do dia?",
+            "Umidade do solo às 8 horas?": "Qual a umidade do solo às 8 horas hoje?"
         };
 
         form.setValue('chat', fullQuestions[suggestion] || suggestion);
@@ -92,7 +92,7 @@ export default function Chatbot() {
     }
 
     return (
-        <div className="w-full mx-auto p-4 flex flex-col max-h-screen min-h-screen pb-20">
+        <div className="w-full mx-auto p-2 flex flex-col max-h-screen min-h-screen pb-20">
             <Card className="flex flex-col flex-grow">
                 <CardContent className="flex-grow p-4 overflow-hidden">
                     <ScrollArea className="h-[45vh] space-y-2 overflow-y-auto flex flex-col">
