@@ -54,6 +54,7 @@ export const metadata: Metadata = {
 
 const projectId = "rhix9be4o5";
 
+Clarity.consent();
 Clarity.init(projectId);
 
 export default function RootLayout({
