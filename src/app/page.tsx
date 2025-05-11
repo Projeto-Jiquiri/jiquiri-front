@@ -4,8 +4,11 @@ import TitleHome from "@/components/homepage/titleHome";
 import HomeBanner from "@/components/homepage/homeBanner";
 import DefaultFooter from "@/components/generalComponents/defaultFooter";
 import ImageHero from "@/components/homepage/homeBanner/imageHero";
+import Clarity from "@microsoft/clarity";
 
-
+const projectId = "rhix9be4o5";
+// Clarity.consent();
+Clarity.init(projectId);
 
 export default function Home() {
   return (
