@@ -1,7 +1,7 @@
 'use client'
-import { useEffect, useRef } from "react";
+import {useEffect, useRef} from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {ScrollTrigger} from "gsap/ScrollTrigger";
 
 import TechCube from "@/components/generalComponents/techCube";
 import reactLogo from '@/assets/SVG/reactLogo.svg';
@@ -63,8 +63,7 @@ export default function Techs() {
             <div ref={techsTextRef} className="flex flex-col justify-center items-center gap-4 md:gap-4 lg:gap-4 xl:gap-4 2xl:gap-8">
                 <h3 className="font-catilde font-semibold text-center text-Black_Jiquiri w-60 text-xl md:w-72 md:text-2xl lg:w-72 lg:text-xl xl:w-80 xl:text-2xl 2xl:w-80 2xl:text-3xl">Tecnologias Utilizadas no Projeto</h3>
                 <p className="font-poppins text-Black_Jiquiri font-extralight text-center w-[65vw] text-base md:w-[60vw] md:text-xl lg:w-[40vw] lg:text-lg xl:w-[40vw] xl:text-xl 2xl:w-[35vw] 2xl:text-xl">
-                    Lorem ipsum dolor sit amet consectetur. Morbi maecenas est nisi pellentesque sit nisl. Morbi faucibus blandit turpis nec duis ut pellentesque venenatis tellus.
-                    Porttitor tristique blandit proin commodo bibendum commodo integer
+                    Para integrar sustentabilidade, automação e acessibilidade, o Projeto Jiquiri faz uso de tecnologias acessíveis, eficientes e educativas. Entre os principais recursos utilizados, destacam-se:
                 </p>
             </div>
             <div ref={frontendRef} className="flex flex-col justify-center items-center gap-6 md:gap-6 lg:gap-6 xl:gap-8 2xl:gap-10">
@@ -99,7 +98,7 @@ export default function Techs() {
                 <div className="grid grid-cols-2 gap-6 md:grid-cols-3 md:gap-8 lg:grid-cols-3 xl:grid-cols-3 lg:gap-8 xl:gap-10 2xl:grid-cols-3 2xl:gap-10">
                     <TechCube title="Arduino" image={arduinoLogo} url="https://www.arduino.cc/" alt="Arduino Logo" />
                     <TechCube title="ESP32" image={esp32Logo} url="https://www.espressif.com/en/products/socs/esp32" alt="ESP32 Logo" />
-                    <TechCube image={cLogo} url="https://en.wikipedia.org/wiki/C_(programming_language)" alt="C Logo" />
+                    <TechCube image={cLogo} url="https://pt.wikipedia.org/wiki/C%2B%2B" alt="C Logo" />
                 </div>
             </div>
         </div>
