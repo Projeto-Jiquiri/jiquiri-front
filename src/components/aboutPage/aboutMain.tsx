@@ -9,6 +9,7 @@ import LottieAnimation from "@/components/animations/animationLottie";
 import GreenFabricAnimation from "@/assets/Animations/greenFabric.json";
 import {VerticalDividerDashed} from "@/components/generalComponents/divider";
 import GreetingsComponent from "@/components/aboutPage/greetingsComponent";
+import EquipeMain from "@/components/equipePage/equipeMain";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -81,6 +82,9 @@ export default function AboutMain() {
 
                 </div>
             </div>
+
+            <EquipeMain/>
+            
             <div
                 className="absolute top-[25%] right-[3%] md:top-[30%] md:right-[3.5%] lg:top-[30%] lg:right-[3.5%] xl:top-[35%] xl:right-[3.5%] 2xl:top-[55%] 2xl:right-[3.5%]">
                 <VerticalDividerDashed/>
